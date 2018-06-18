@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   resources :organisers do
   resources :bookings, only: [:index, :show]
   end
-  get 'events/index'
-  get 'events/show'
   devise_for :users
   root to: 'pages#home'
 end
