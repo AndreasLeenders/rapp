@@ -4,6 +4,6 @@ class Band < ApplicationRecord
   has_many :bookings
   has_many :categories, through: :band_category
 
-  validates :name, prensence: true
-  validates :location, prensence: true
+  validates :name, presence: true
+  validates :location, presence: true
 end

@@ -14,7 +14,7 @@ puts "creating organisers"
   user = User.new(
     email:    Faker::Internet.email,
     password: pwd,
-    
+
     is_organiser: true,
     is_band: false,
     )
@@ -31,7 +31,7 @@ puts "organisers created"
 
 
 puts "creating bands"
-10.times do 
+10.times do
   user = User.new(
     email:    Faker::Internet.email,
     password: "teeest",
