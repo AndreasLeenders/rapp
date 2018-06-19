@@ -7,8 +7,8 @@ class OrganisersController < ApplicationController
   end
 
   def create
-    @organiser = organiser.new(organiser_params)
-    @organiser.restaurant = @restaurant
+    @organiser = Organiser.new(organiser_params)
+
     if @organiser.save
       redirect_to organiser_path(@organiser),  notice: 'Organiser was successfully created.'
     else
