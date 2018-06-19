@@ -57,8 +57,6 @@ puts "creating events"
 10.times do
   neg1 = rand(0..1)
   neg2 = rand(0..1)
-  month = rand(0..12)
-  day = rand(1..31)
 
   event = Event.new(
     organiser_id: Organiser.all.sample.id,
