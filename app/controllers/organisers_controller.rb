@@ -16,6 +16,10 @@ class OrganisersController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
   def update
     if @organiser.update(organiser_params)
       redirect_to organiser_path(@organiser), notice: 'Organiser was successfully updated.'
