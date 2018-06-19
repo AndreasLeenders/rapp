@@ -1,5 +1,7 @@
+<div id="wrap-content">
 <p>
   <strong>
+    <% if !current_user.nil? %>
     <% if current_user.is_organiser %>
     You're an organiser !
     <% elsif current_user.is_band %>
@@ -7,15 +9,19 @@
     <% else %>
     You're not logged in !
     <% end %>
+    <% end %>
   </strong>
 </p>
 
 <p><%= link_to "Back to events index", events_path %></p>
 
 <h1><%= @event.name %></h1>
+<h2><%= @event.city.capitalize %></h2>
+<% if !current_user.nil? %>
 <% organiser = Organiser.where("user_id = #{current_user.id}") %>
-<h2><% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %></h2>
+<h3><% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %></h3>
+<% end %>
 <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
 <p>Location : <%= @event.location %></p>
 <%= image_tag(@event.pictures) %>
-
+</div>

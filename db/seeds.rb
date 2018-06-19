@@ -67,6 +67,7 @@ puts "creating events"
     equipment: ['everything', 'some', 'none'].sample,
     price: rand(0..1000),
     commodities: ['toilets', 'none'].sample,
+    city: ['brussels', 'paris', 'amsterdam'].sample,
     location: "#{'-'if neg1 >= 0.5}#{rand(1..180)}.#{rand(0..10000)},#{'-'if neg2 >= 0.5}#{rand(1..180)}.#{rand(0..10000)}", # example -33.8569,151.2152
     pictures: "http://www.vancoolver.com/photos/vancouver/vancouver_city_life/05-12-10_andre_rieu_vancouver_concert/051210191217_gm_place_stadium_hosting_andre_rieu_vancouver_concert.jpg",
     )

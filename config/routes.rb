@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :events
   resources :bands
+  get '/search', to: 'events#search', as: 'search'
 
   resources :bands do
   resources :bookings

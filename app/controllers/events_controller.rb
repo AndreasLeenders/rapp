@@ -45,6 +45,10 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def search
+    @events = Event.where ("city LIKE '%#{params[:event][:city].downcase}%'")
+  end
+
   private
 
   def set_event
