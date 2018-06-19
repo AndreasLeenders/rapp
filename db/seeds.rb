@@ -74,6 +74,17 @@ puts "creating events"
 end
 puts "events created"
 
+puts "creating bookings"
+10.times do
+  booking = Booking.new(
+    band_id: Band.all.sample.id,
+    event_id: Event.all.sample.id,
+    status: ['pending', 'accepted', 'refused', 'cancelled'].sample,
+    )
+  booking.save!
+end
+puts "bookings created"
+
 puts "creating sample organiser (organiser@gmail.com // pass : organiserpassword)"
     user = User.new(
     email: "organiser@gmail.com",
