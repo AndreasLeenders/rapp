@@ -14,7 +14,7 @@ class BandsController < ApplicationController
   end
 
   def edit
-   if is_band?
+   if !is_band?
     puts "you are not allowed to access"
     redirect_to bands_path
   end
@@ -44,7 +44,6 @@ class BandsController < ApplicationController
    @band.destroy
   end
 
-
  private
 
   def set_band
@@ -53,5 +52,9 @@ class BandsController < ApplicationController
 
   def band_params
     params.require(:band).permit(:name)
+  end
+
+  def is_band?
+    return true if current_band.is_band == true
   end
 end
