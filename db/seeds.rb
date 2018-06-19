@@ -59,13 +59,12 @@ puts "creating events"
   neg2 = rand(0..1)
   month = rand(0..12)
   day = rand(1..31)
-  organiser_nb = User.where("is_organiser").length
 
-  event = Event.new (
-    organiser_id: rand(1..organiser_nb),
-    name: Faker::Cannabis.buzzword,
-    date_begin: DateTime.new(2018,month,day),
-    date_end: DateTime.new(2018,month,day + 3),
+  event = Event.new(
+    organiser_id: Organiser.all.sample.id,
+    name: Faker::Coffee.blend_name,
+    date_begin: DateTime.new(2018,3,7),
+    date_end: DateTime.new(2018,3,10),
     capacity: rand(10..1000),
     equipment: ['everything', 'some', 'none'].sample,
     price: rand(0..1000),
