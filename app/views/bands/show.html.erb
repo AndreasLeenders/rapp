@@ -1,6 +1,6 @@
    <%= @band.name %> </h1>
 
-      <%= link_to "Delete", band_path(@band), method: :delete %>
-   <%= link_to "Add Band", new_band_path(), id: "band-add-button"%>
-   <%= link_to "Go back", band_path %>
+      <%= link_to "Delete", bands_path(@band), method: :delete %>
+   <%= link_to "Add Band", new_band_path, id: "band-add-button"%>
+   <%= link_to "Go back", bands_path %>
    

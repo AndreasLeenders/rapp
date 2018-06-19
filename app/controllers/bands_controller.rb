@@ -14,7 +14,7 @@ class BandsController < ApplicationController
   end
 
   def edit
-   if !is_band
+   if is_band?
     puts "you are not allowed to access"
     redirect_to bands_path
   end
@@ -41,9 +41,7 @@ class BandsController < ApplicationController
   end
 
   def destroy
-   @band = Band.find(params[:id])
    @band.destroy
-   redirect_to band_path(@band)
   end
 
 
