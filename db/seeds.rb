@@ -38,7 +38,7 @@ puts "creating bands"
     is_band: true,
     is_organiser: false,
   )
-  user.save
+  user.save!
 
   band = Band.new(
     user_id: user.id,
@@ -48,6 +48,29 @@ puts "creating bands"
     soundcloud: "https://soundcloud.com/deadmau5",
     location: Faker::Address.full_address,
     )
+  band.save!
 end
 
 puts "bands created"
+
+puts "creating events"
+10.times do
+  neg1 = rand(0..1)
+  neg2 = rand(0..1)
+
+  event = Event.new(
+    organiser_id: Organiser.all.sample.id,
+    name: Faker::Coffee.blend_name,
+    date_begin: DateTime.new(2018,3,7),
+    date_end: DateTime.new(2018,3,10),
+    capacity: rand(10..1000),
+    equipment: ['everything', 'some', 'none'].sample,
+    price: rand(0..1000),
+    commodities: ['toilets', 'none'].sample,
+    location: "#{'-'if neg1 >= 0.5}#{rand(1..180)}.#{rand(0..10000)},#{'-'if neg2 >= 0.5}#{rand(1..180)}.#{rand(0..10000)}", # example -33.8569,151.2152
+    pictures: "http://www.vancoolver.com/photos/vancouver/vancouver_city_life/05-12-10_andre_rieu_vancouver_concert/051210191217_gm_place_stadium_hosting_andre_rieu_vancouver_concert.jpg",
+    )
+  event.save!
+end
+puts "events created"
+
