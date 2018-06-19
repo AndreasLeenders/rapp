@@ -1,3 +1,5 @@
+<%= render 'components/navbar' %>
+
 <h1>Events organised</h1>
 <% @events.each do |event| %>
 <h1><%= link_to event.name, event_path(event) %></h1>

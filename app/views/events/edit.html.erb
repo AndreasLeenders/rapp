@@ -1,0 +1,24 @@
+<%= render 'components/navbar' %>
+
+<div>
+<%= simple_form_for @event do |f| %>
+  <% if @event.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+<%= f.input :name %>
+<%= f.input :date_begin %>
+<%= f.input :date_end %>
+<%= f.input :capacity %>
+<%= f.input :equipment %>
+<%= f.input :price %>
+<%= f.input :commodities %>
+<%= f.input :location %>
+<%= f.input :pictures %>
+<% end %>
+</div>

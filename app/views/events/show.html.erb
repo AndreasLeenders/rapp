@@ -1,4 +1,21 @@
+<%= render 'components/navbar' %>
+
+<p>
+  <strong>
+    <% if @user.is_organiser %>
+    You're an organiser !
+    <% elsif @user.is_band %>
+    You're a band !
+    <% else %>
+    You're not logged in !
+    <% end %>
+  </strong>
+</p>
+
+<p><%= link_to "Back to events index", events_path %></p>
+
 <h1><%= @event.name %></h1>
+<h2><%= link_to "Edit", edit_event_path(@event) %></h2>
 <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
 <p>Location : <%= @event.location %></p>
 <%= image_tag(@event.pictures) %>
