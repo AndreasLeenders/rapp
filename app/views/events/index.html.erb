@@ -1,2 +1,25 @@
-<h1>Events#index</h1>
-#<p>Find me in app/views/events/index.html.erb</p>
+<h1>Events organised</h1>
+<% @events.each do |event| %>
+<h1><%= link_to event.name, event_path(event) %></h1>
+<h3>Organised by <%= event.organiser.name %></h3>
+<h4>From <%= event.date_begin %> to <%= event.date_end %></h4>
+<% end %>
+
+
+
+<!--
+    create_table "events", force: :cascade do |t|
+    t.bigint "organiser_id"
+    t.string "name"
+    t.datetime "date_begin"
+    t.datetime "date_end"
+    t.integer "capacity"
+    t.text "equipment"
+    t.integer "price"
+    t.text "commodities"
+    t.string "location"
+    t.string "pictures"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organiser_id"], name: "index_events_on_organiser_id"
+  end -->
