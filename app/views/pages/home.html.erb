@@ -1,4 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://stmed.net/sites/default/files/band-%28music%29-wallpapers-30255-8949818.jpg');">
-
+  <div id="search">
+    <%= form_for @event, url: search_path, :html => { class: "search-form" }, method: :get, action: :search, controller: :events do |f| %><%= f.text_field :city, placeholder: "Search a location…" %><%= f.submit value: "Go!", placeholder: "Go!", default: "Go!" %>
+    <% end %>
     </div>
 </div>

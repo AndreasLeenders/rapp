@@ -1,17 +1,17 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <div class="text">
-    <h1><%= link_to "RAPP", root_path %></h1>
+  <div class="navbar-rapp-brand">
+    <h1><%= link_to "Rapp", root_path %></h1>
   </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to "Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% if current_user.nil? %>
-    <%= link_to "Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% else %>
-    <%= link_to "Sign-out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Sign-out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
 

@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_06_18_133057) do
     t.text "equipment"
     t.integer "price"
     t.text "commodities"
+    t.string "city"
     t.string "location"
     t.string "pictures"
     t.datetime "created_at", null: false
