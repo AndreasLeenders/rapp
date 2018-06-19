@@ -1,0 +1,8 @@
+<h1>Add band</h1>
+<%#= link_to "Add Band", bands_path, id: "band-add-button"%>
+<%= simple_form_for @band do |f| %>
+  <%= f.input :name %>
+
+  <%= f.input :location %>
+  <%= f.submit "Submit" , class: "btn btn-primary" %>
+  <% end %>
