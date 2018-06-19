@@ -40,7 +40,9 @@ class EventsController < ApplicationController
   end
 
   def set_user
+    if !current_user.nil?
     @user = User.find(current_user.id)
+    end
   end
 
   def is_organiser?
