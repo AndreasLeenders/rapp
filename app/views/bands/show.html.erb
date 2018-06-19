@@ -1,0 +1,22 @@
+   <%= @band.name %> </h1>
+   <p>
+   <% if @band.empty? %>
+     No Bands yet. Add one!
+   </p>
+   <% else %>
+   <h3> Bands </h2>
+     <% end %>
+   <% @bands.each do |d| %>
+     <%= d.band.name %> 
+      <%= link_to "Delete", band_path(d), method: :delete %>
+
+     
+   <%= d.band %>
+   <% end %>
+   <%= link_to "Add Band", new_band_path(@band), id: "band-add-button"%>
+   <%= link_to "Go back", band_path %>
+   <%= simple_form_for [@band] do |f| %>
+     <%= f.input :band, collection: band.order(:name) %>
+     <%= f.input :content %>
+     <%= f.submit "Submit" %>
+   <% end %>

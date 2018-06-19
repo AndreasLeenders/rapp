@@ -1,0 +1,4 @@
+<% @bands.each do |band| %>
+    <h2> <%= band.name  %> </h2>
+     <%= link_to "", band_path(band[:id]) %>
+<% end %>
