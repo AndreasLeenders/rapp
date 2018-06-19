@@ -74,3 +74,22 @@ puts "creating events"
 end
 puts "events created"
 
+puts "creating sample organiser (organiser@gmail.com // pass : organiserpassword)"
+    user = User.new(
+    email: "organiser@gmail.com",
+    password: "organiserpassword",
+    is_band: false,
+    is_organiser: true,
+  )
+    user.save!
+puts "done"
+
+puts "creating sample band (band@gmail.com // pass : bandpassword)"
+    user = User.new(
+    email: "band@gmail.com",
+    password: "bandpassword",
+    is_band: true,
+    is_organiser: false,
+  )
+    user.save!
+puts "done"

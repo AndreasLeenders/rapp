@@ -48,6 +48,5 @@ class OrganisersController < ApplicationController
 
   def set_user
     @user = current_user.id
-    raise
   end
 end

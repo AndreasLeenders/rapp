@@ -1,3 +1,15 @@
+<p>
+  <strong>
+    <% if @user.is_organiser %>
+    You're an organiser !
+    <% elsif @user.is_band %>
+    You're a band !
+    <% else %>
+    You're not logged in !
+    <% end %>
+  </strong>
+</p>
+
 <h1><%= @event.name %></h1>
 <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
 <p>Location : <%= @event.location %></p>
