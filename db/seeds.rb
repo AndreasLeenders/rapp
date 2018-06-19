@@ -11,7 +11,7 @@ require 'faker'
 puts "creating organisers"
 10.times do
     pwd = "teeest"
-  user = User.new(
+    user = User.new(
     email:    Faker::Internet.email,
     password: pwd,
 
