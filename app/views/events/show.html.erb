@@ -14,7 +14,7 @@
 
 <h1><%= @event.name %></h1>
 <% organiser = Organiser.where("user_id = #{current_user.id}") %>
-<h2><% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% end %></h2>
+<h2><% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %></h2>
 <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
 <p>Location : <%= @event.location %></p>
 <%= image_tag(@event.pictures) %>
