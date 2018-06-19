@@ -9,6 +9,13 @@ class EventsController < ApplicationController
     @event
   end
 
+  def show_user_events
+    if current_user.is_organiser
+    organiser = Organiser.find_by user_id: current_user.id
+    @events = Event.where("organiser_id = #{organiser.id}")
+    end
+  end
+
   def edit
     if !is_organiser? || @user.id != @event.organiser_id
       puts "You\'re not allowed to access this page"
@@ -64,6 +71,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :location, :pictures)
+    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :city, :location, :pictures)
   end
 end

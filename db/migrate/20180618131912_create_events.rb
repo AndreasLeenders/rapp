@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.text :commodities
       t.string :city
       t.string :location
-      t.string :pictures
+      t.string :picture
 
 
       t.timestamps
