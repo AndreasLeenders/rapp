@@ -1,8 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :set_band
+  before_action :set_user :set_band
 
   def index
-    @bookings = Booking.all
+    if current_user.is_band
+    @bookings = Booking.where("band_id = #{@band.id}")
+    elsif current_user.is_organiser
+    @bookings = Booking.where("organiser_id = #{@organiser_id}")
+    end
   end
 
   def show
@@ -46,6 +50,10 @@ class BookingsController < ApplicationController
 
   def set_band
     @band = Band.find(params[:band_id])
+  end
+
+  def set_user
+  @user = User.find(current_user.id)
   end
 
   def set_booking
