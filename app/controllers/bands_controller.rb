@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-   before_action :set_band, only: [:show, :destroy]
+   before_action :set_band, only: [:show, :destroy, :edit]
  
   def index 
    @bands = Band.all
@@ -24,7 +24,7 @@ class BandsController < ApplicationController
  
   def create
    @band = Band.new(band_params)
-   raise 
+   @band.user = current_user
    if @band.save
     redirect_to bands_path(@band)
    else
@@ -45,6 +45,7 @@ class BandsController < ApplicationController
 
   def destroy
    @band.destroy
+   redirect_to bands_path
   end
 
  private
@@ -58,6 +59,6 @@ class BandsController < ApplicationController
   end
 
   def is_band?
-    return true if current_band.is_band == true
+    return true if current_user.is_band == true
   end
 end

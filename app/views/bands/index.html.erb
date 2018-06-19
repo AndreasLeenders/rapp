@@ -6,8 +6,8 @@
 
 
    <% @bands.each do |band| %>
-       <h2> <%= band.name  %> </h2>
-        <%= link_to band.name, band_path(band) %>
+       <h2> <%= link_to band.name, band_path(band) %> </h2>
+        
    <% end %>
 
    
