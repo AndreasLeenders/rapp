@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  resources :events, only: [:index, :show]
+  resources :events
   resources :bands
 
-  resources :organisers do
-  resources :events, only: [:create, :edit, :update, :destroy]
-  end
   resources :bands do
   resources :bookings
   end

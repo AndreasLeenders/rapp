@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update]
+  before_action :set_event, only: [:show, :edit, :update]
   before_action :set_user
 
   def index
@@ -18,13 +18,13 @@ class EventsController < ApplicationController
   end
 
   def update
-#     if is_organiser?
-#       if @event.update(event_params)
-# +     redirect_to event_path(@event), notice: 'Event was successfully updated.'
-#       else
-#         render: edit
-#       end
-#     end
+    if is_organiser?
+      if @event.update(event_params)
+       redirect_to event_path(@event)
+      else
+        render :edit
+      end
+    end
   end
 
   def create
