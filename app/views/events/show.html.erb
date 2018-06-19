@@ -1,10 +1,8 @@
-<%= render 'components/navbar' %>
-
 <p>
   <strong>
-    <% if @user.is_organiser %>
+    <% if current_user.is_organiser %>
     You're an organiser !
-    <% elsif @user.is_band %>
+    <% elsif current_user.is_band %>
     You're a band !
     <% else %>
     You're not logged in !
@@ -15,7 +13,8 @@
 <p><%= link_to "Back to events index", events_path %></p>
 
 <h1><%= @event.name %></h1>
-<h2><%= link_to "Edit", edit_event_path(@event) %></h2>
+<% organiser = Organiser.where("user_id = #{current_user.id}") %>
+<h2><% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %></h2>
 <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
 <p>Location : <%= @event.location %></p>
 <%= image_tag(@event.pictures) %>

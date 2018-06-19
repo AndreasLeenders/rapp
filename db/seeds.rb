@@ -93,6 +93,13 @@ puts "creating sample organiser (organiser@gmail.com // pass : organiserpassword
     is_organiser: true,
   )
     user.save!
+
+    organiser = Organiser.new(
+      user_id: user.id,
+      name: Faker::TwinPeaks.character
+      )
+    organiser.save!
+
 puts "done"
 
 puts "creating sample band (band@gmail.com // pass : bandpassword)"
@@ -103,4 +110,14 @@ puts "creating sample band (band@gmail.com // pass : bandpassword)"
     is_organiser: false,
   )
     user.save!
+
+    band = Band.new(
+      user_id: user.id,
+      name: Faker::RockBand.name,
+      content: Faker::StarWars.quote,
+      pictures: "http://igloomusic.co.uk/wp-content/uploads/2014/09/my-band.jpg",
+      soundcloud: "https://soundcloud.com/deadmau5",
+      location: Faker::Address.full_address
+      )
+    band.save!
 puts "done"
