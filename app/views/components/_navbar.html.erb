@@ -1,16 +1,18 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <div class="text">
-    <h1>RAPP</h1>
+    <h1><%= link_to "RAPP", root_path %></h1>
   </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <%= link_to "Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Home</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Saved</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Sign-up</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Log-in</a>
+    <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if current_user.nil? %>
+    <%= link_to "Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% else %>
+    <%= link_to "Sign-out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
 
 
     <!-- Profile picture with dropdown list -->
