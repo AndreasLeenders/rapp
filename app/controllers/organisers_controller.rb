@@ -29,7 +29,8 @@ class OrganisersController < ApplicationController
   end
 
   def show
-    @user = user.id
+    @user = current_user.id
+
   end
 
   def index
@@ -48,6 +49,5 @@ class OrganisersController < ApplicationController
 
   def set_user
     @user = current_user.id
-    raise
   end
 end
