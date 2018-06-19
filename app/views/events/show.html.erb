@@ -1,2 +1,5 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1><%= @event.name %></h1>
+<p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
+<p>Location : <%= @event.location %></p>
+<%= image_tag(@event.pictures) %>
+
