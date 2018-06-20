@@ -20,7 +20,6 @@
       <div class="dropdown">
         <img src="https://c.pxhere.com/photos/ae/db/music_concert_singer_band_guitar-314.jpg!d" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Team members</a></li>
           <li><%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
              <% end %></li>

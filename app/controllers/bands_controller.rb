@@ -1,6 +1,5 @@
 class BandsController < ApplicationController
-
-   before_action :set_band, only: [:index, :show, :create, :destroy, :edit]
+   before_action :set_band, only: [:show, :create, :destroy, :edit]
 
   def index
    @bands = Band.all
