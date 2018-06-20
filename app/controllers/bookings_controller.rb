@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @band = Band.find(params[:band_id])
   end
 
   def create

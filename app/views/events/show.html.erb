@@ -1,13 +1,15 @@
 <div id="wrap-content">
-<p><%= link_to "Back to events index", events_path %></p>
-
-<h1><%= @event.name %></h1>
-<h2><%= @event.city.capitalize %></h2>
-<% if !current_user.nil? %>
-<% organiser = Organiser.where("user_id = #{current_user.id}") %>
-<h3><% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %></h3>
-<% end %>
-<p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
-<p>Location : <%= @event.location %></p>
-<%= image_tag(@event.picture) %>
+  <div class="quarter-screen-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= @event.picture %>'); background-size: cover; background-position: center;">
+    <h1 class="cover-image title"><%= @event.name %></h1><br>
+    <h2 class="cover-image subtitle"><%= @event.city.capitalize %></h2>
+  </div>
+  <p><i class="fas fa-arrow-left"></i> <%= link_to "Back to events index", events_path, class: "breadcrumb" %></p>
+  <% if !current_user.nil? %>
+    <% organiser = Organiser.where("user_id = #{current_user.id}") %>
+    <h3>
+      <% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %>
+    </h3>
+  <% end %>
+  <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
+  <p>Location : <%= @event.location %></p>
 </div>
