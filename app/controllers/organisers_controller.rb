@@ -29,7 +29,7 @@ class OrganisersController < ApplicationController
   end
 
   def show
-
+    @organiser = Organiser.find(params[:id])
   end
 
   def index
