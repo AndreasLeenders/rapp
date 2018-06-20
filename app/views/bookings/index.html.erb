@@ -1,5 +1,20 @@
- <%@bookings.each do |booking|%>
 
-<h2><%= booking.status %></h2>
 
-<%end %>
+<div class="message">
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+  <div class="message-name">
+    <% current_user.is_band %>
+    <% @bookings = current_user.band.bookings %>
+    <% @bookings.each do |booking|%>
+   <h3> Event: <%= booking.event.name %></h3>
+    <h3> Price: <%= booking.event.price %> </h3>
+    <h3>Status: <%= booking.status %></h3>
+    <% end %>
+  </div>
+  <div class="message-body">
+    <p><strong>I am not sure yet!</strong></p>
+    <p>
+      Booking message needs to be here but it is not...
+    </p>
+  </div>
+</div>
