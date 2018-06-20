@@ -10,7 +10,6 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.integer :price
       t.text :commodities
       t.string :city
-      t.string :location
       t.string :picture
 
 

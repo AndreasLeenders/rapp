@@ -3,13 +3,33 @@
     <h1 class="cover-image title"><%= @event.name %></h1><br>
     <h2 class="cover-image subtitle"><%= @event.city.capitalize %></h2>
   </div>
-  <p><i class="fas fa-arrow-left"></i> <%= link_to "Back to events index", events_path, class: "breadcrumb" %></p>
   <% if !current_user.nil? %>
     <% organiser = Organiser.where("user_id = #{current_user.id}") %>
-    <h3>
-      <% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event) %><% end %>
-    </h3>
   <% end %>
-  <p>Capacity : <%= @event.capacity %> | Equipments : <%= @event.equipment %> | Commodities : <%= @event.commodities %> | Price: <%= @event.price %>€</p>
-  <p>Location : <%= @event.location %></p>
+  <div id="info-container">
+    <div id="map-container">
+      <div id="map" class="half-page-left" data-markers="<%= @marker.to_json %>"></div>
+    </div>
+
+    <div id="content-container">
+    <h4>
+      <%= @event.date_begin.strftime("%b %e") %>
+      <i class="fas fa-arrow-right"></i>
+      <%= @event.date_end.strftime("%b %e") %>
+    </h4>
+    <ul>
+      <li>Capacity : <%= @event.capacity %></li>
+      <li>Equipments : <%= @event.equipment %></li>
+      <li>Commodities : <%= @event.commodities %></li>
+      <li>Price: <%= @event.price %>€</li>
+    </ul>
+    <h3>
+      <% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event) %><%= link_to "Delete", event_path(@event), method: :delete %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event), class: "request-btn" %><% end %>
+    </h3>
+    </div>
+  </div>
+    <p>
+    <i class="fas fa-arrow-left"></i>
+    <%= link_to "Back to events index", events_path, class: "breadcrumb" %>
+  </p>
 </div>
