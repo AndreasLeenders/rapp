@@ -15,12 +15,13 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-      @marker =
+      @markers = [
         {
           lat: @event.latitude,
           lng: @event.longitude#,
           # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
-        }
+        } ]
+
   end
 
   def show_user_events

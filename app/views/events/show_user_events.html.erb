@@ -8,7 +8,7 @@
   <% @events.each do |event| %>
     <section class="card">
     <h1><%= link_to event.name, event_path(event) %></h1>
-    <h2><%= event.city.capitalize %></h2>
+    <h2><%= event.address.split(",").each(&:lstrip!)[1].capitalize %></h2>
     <h3>Organised by <%= event.organiser.name %></h3>
     <h4>From <%= event.date_begin %> to <%= event.date_end %></h4>
   <% end %>
