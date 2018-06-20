@@ -1,13 +1,19 @@
 class BookingsController < ApplicationController
-  before_action :set_user :set_band
 
   def index
     if current_user.is_band
-    @bookings = Booking.where("band_id = #{@band.id}")
+    @bookings = []
+    current_user.bands.each do |band|
+      @bookings += band.bookings
+    end
     elsif current_user.is_organiser
-    @bookings = Booking.where("organiser_id = #{@organiser_id}")
+    @bookings = []
+    current_user.organisers.each do |organiser|
+      @bookings += organiser.bookings
+      end
     end
   end
+
 
   def show
     @booking = Booking.find(params[:id])
@@ -19,11 +25,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.band = @band
+    @booking.band_id = @band
     if @booking.save
       redirect_to band_booking_path(@booking.band)
     else
-      render "/bookings/new"
+      render :new
     end
   end
 

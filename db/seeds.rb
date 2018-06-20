@@ -122,3 +122,13 @@ puts "creating sample band (band@gmail.com // pass : bandpassword)"
       )
     band.save!
 puts "done"
+
+puts "creating booking"
+
+  booking = Booking.new(
+        band_id: band.id,
+        event_id: Event.all.sample.id,
+        status: ['pending', 'accepted', 'refused', 'cancelled'].sample,
+    )
+  booking.save!
+
