@@ -68,7 +68,7 @@ puts "creating events"
     price: rand(0..1000),
     commodities: ['toilets', 'none'].sample,
     city: ['brussels', 'paris', 'amsterdam'].sample,
-    location: "#{'-'if neg1 >= 0.5}#{rand(1..180)}.#{rand(0..10000)},#{'-'if neg2 >= 0.5}#{rand(1..180)}.#{rand(0..10000)}", # example -33.8569,151.2152
+    address: Faker::Address.full_address.downcase,
     picture: ["https://images.pexels.com/photos/154147/pexels-photo-154147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/248963/pexels-photo-248963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/167480/pexels-photo-167480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://c.pxhere.com/photos/86/5f/concert_band_crowd_music_gig-100440.jpg!d", "https://c.pxhere.com/photos/07/b8/bar_drinks_alcohol_restaurant_pub-1205054.jpg!d"].sample
     )
   event.save!
