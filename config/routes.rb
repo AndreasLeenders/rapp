@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :events
   get '/my_events', to: 'events#show_user_events', as: 'my_events'
+  get '/my_profile', to: 'profile#show_organiser_profile', as: 'my_profile'
 
 
   resources :bands
