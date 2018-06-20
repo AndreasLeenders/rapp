@@ -1,5 +1,6 @@
 class BandsController < ApplicationController
-   before_action :set_band, only: [:show, :create, :destroy]
+
+   before_action :set_band, only: [:index, :show, :create, :destroy, :edit]
 
   def index
    @bands = Band.all
@@ -55,6 +56,6 @@ class BandsController < ApplicationController
   end
 
   def is_band?
-    return true if current_band.is_band == true
+    return true if current_user.is_band == true
   end
 end
