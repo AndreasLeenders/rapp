@@ -67,10 +67,17 @@ puts "creating events"
     equipment: ['everything', 'some', 'none'].sample,
     price: rand(0..1000),
     commodities: ['toilets', 'none'].sample,
-    city: ['brussels', 'paris', 'amsterdam'].sample,
     address: Faker::Address.full_address.downcase,
     picture: ["https://images.pexels.com/photos/154147/pexels-photo-154147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/248963/pexels-photo-248963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/167480/pexels-photo-167480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://c.pxhere.com/photos/86/5f/concert_band_crowd_music_gig-100440.jpg!d", "https://c.pxhere.com/photos/07/b8/bar_drinks_alcohol_restaurant_pub-1205054.jpg!d"].sample
     )
+  if event.latitude.nil?
+    event.latitude = 0
+  end
+  if event.longitude.nil?
+    event.longitude = 0
+  end
+  event.city = event.address.split(",").each(&:lstrip!)[1].capitalize
+
   event.save!
 end
 puts "events created"

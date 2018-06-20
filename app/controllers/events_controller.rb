@@ -53,6 +53,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.city = @event.address.split(",").each(&:lstrip!)[1].capitalize
     @event.organiser_id = current_user.organiser.id
     if @event.save
       redirect_to event_path(@event),  notice: 'Organiser was successfully created.'
@@ -93,6 +94,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :city, :pictures)
+    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :address, :pictures)
   end
 end
