@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.organiser_id = current_user.organisers.first.id
+    @event.organiser_id = current_user.organiser.id
     if @event.save
       redirect_to event_path(@event),  notice: 'Organiser was successfully created.'
     else
