@@ -1,19 +1,13 @@
 class BookingsController < ApplicationController
 
+
   def index
     if current_user.is_band
-    @bookings = []
-    current_user.bands.each do |band|
-      @bookings += band.bookings
-    end
-    elsif current_user.is_organiser
-    @bookings = []
-    current_user.organisers.each do |organiser|
-      @bookings += organiser.bookings
-      end
+    @bookings = current_user.band.bookings
+    else
+    @bookings = current_user.organiser.bookings
     end
   end
-
 
   def show
     @booking = Booking.find(params[:id])

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookings, only: :index
   get '/search', to: 'events#search', as: 'search'
 
   resources :events

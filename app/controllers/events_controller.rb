@@ -31,14 +31,14 @@ class EventsController < ApplicationController
   end
 
   def edit
-    if !is_organiser? || @user.id != @event.organiser_id
+    if !is_organiser? || current_user.organiser.id != @event.organiser_id
       puts "You\'re not allowed to access this page"
       redirect_to events_path
     end
   end
 
   def update
-    if is_organiser? && @user.id == @event.organiser_id
+    if is_organiser? && current_user.id == @event.organiser_id
       if @event.update(event_params)
        redirect_to event_path(@event)
       else
@@ -85,11 +85,11 @@ class EventsController < ApplicationController
   end
 
   def is_organiser?
-    return true if @user.is_organiser == true
+    return true if current_user.is_band == false
   end
 
   def is_band?
-    return true if @user.is_band == true
+    return true if current_user.is_band == true
   end
 
   def event_params
