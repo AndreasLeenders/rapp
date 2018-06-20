@@ -1,0 +1,46 @@
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  height: 300px;
+  width: 300px;
+  margin: 30px;
+  padding: 20px;
+  color: white;
+  display: grid;
+  grid-template-rows: 15% 50% 20% 15%;
+}
+
+.card h2>a {
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+  text-decoration: none;
+  &:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.card h2 {
+  grid-row: 2 / span 1;
+  border-bottom: 3px solid white;
+  padding-bottom: 10px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 20px;
+  grid-row: 1 / span 1;
+}
+
+.card h4 {
+  grid-row: 3 / span 1;
+  font-size: 0.8em;
+  line-height: 1.2em;
+}
+
+.card h5 {
+  grid-row: 4 / span 1;
+}
