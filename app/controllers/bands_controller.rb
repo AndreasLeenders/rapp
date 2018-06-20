@@ -1,13 +1,16 @@
 class BandsController < ApplicationController
 
-   before_action :set_band, only: [:index, :show, :create, :destroy, :edit]
+   before_action :set_band, only: [:show, :destroy, :edit]
+ 
+  def index 
 
-  def index
    @bands = Band.all
+
   end
 
   def show
    @band = Band.find(params[:id].to_i)
+
   end
 
   def new
@@ -23,8 +26,9 @@ class BandsController < ApplicationController
 
   def create
    @band = Band.new(band_params)
+   @band.user = current_user
    if @band.save
-    redirect_to band_path(@band)
+    redirect_to bands_path(@band)
    else
     render :new
    end
@@ -43,6 +47,7 @@ class BandsController < ApplicationController
 
   def destroy
    @band.destroy
+   redirect_to bands_path
   end
 
  private
@@ -52,7 +57,7 @@ class BandsController < ApplicationController
   end
 
   def band_params
-    params.require(:band).permit(:name)
+    params.require(:band).permit(:name, :location)
   end
 
   def is_band?
