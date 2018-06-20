@@ -1,37 +1,50 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <div class="text">
-    <h1>RAPP</h1>
+  <div class="navbar-rapp-brand">
+    <span class="rapp-logo"><%= link_to "Rapp", root_path %></span>
   </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to "Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Home</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Saved</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Sign-up</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Log-in</a>
+    <%= link_to "– Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if current_user.nil? %>
+    <%= link_to "– Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% else %>
+    <%= link_to "– Sign-out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
 
-
+    <% if !current_user.nil? %>
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <img src="the" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <img src="https://c.pxhere.com/photos/ae/db/music_concert_singer_band_guitar-314.jpg!d" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Team members</a></li>
           <li><%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
              <% end %></li>
+         <% if !current_user.nil? && current_user.is_organiser %>
+            <li><a href="#">My profile</a></li>
+            <%= link_to "My event", my_events_path %>
+            <li><a href="#">Bookings</a></li>
+          <% elsif !current_user.nil? && current_user.is_band %>
+            <li><a href="#">My profile</a></li>
+            <li><a href="#">Bookings</a></li>
+          <% end %>
         </ul>
       </div>
     </div>
+    <% end %>
   </div>
 
   <!-- Dropdown appearing on mobile only -->
+  <% if !current_user.nil? %>
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+
         <li><a href="#">Search</a></li>
         <li><a href="#">Become an Organizer</a></li>
 
@@ -39,7 +52,18 @@
         <li><%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
              <% end %></li>
+
+        <% if !current_user.nil? && current_user.is_organiser %>
+        <li><a href="#">My profile</a></li>
+        <li><a href="#">My events</a></li>
+        <li><a href="#">Bookings</a></li>
+        <% elsif !current_user.nil? && current_user.is_band %>
+        <li><a href="#">My profile</a></li>
+        <li><a href="#">Bookings</a></li>
+        <% end %>
+
       </ul>
     </div>
   </div>
+  <% end %>
 </div>

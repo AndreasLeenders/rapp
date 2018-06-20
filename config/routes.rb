@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get '/search', to: 'events#search', as: 'search'
+
   resources :events
+  get '/my_events', to: 'events#show_user_events', as: 'my_events'
+
+
   resources :bands
 
   resources :bands do

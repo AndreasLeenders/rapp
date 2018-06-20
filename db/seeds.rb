@@ -67,8 +67,9 @@ puts "creating events"
     equipment: ['everything', 'some', 'none'].sample,
     price: rand(0..1000),
     commodities: ['toilets', 'none'].sample,
+    city: ['brussels', 'paris', 'amsterdam'].sample,
     location: "#{'-'if neg1 >= 0.5}#{rand(1..180)}.#{rand(0..10000)},#{'-'if neg2 >= 0.5}#{rand(1..180)}.#{rand(0..10000)}", # example -33.8569,151.2152
-    pictures: "http://www.vancoolver.com/photos/vancouver/vancouver_city_life/05-12-10_andre_rieu_vancouver_concert/051210191217_gm_place_stadium_hosting_andre_rieu_vancouver_concert.jpg",
+    picture: ["https://images.pexels.com/photos/154147/pexels-photo-154147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/248963/pexels-photo-248963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/167480/pexels-photo-167480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://c.pxhere.com/photos/86/5f/concert_band_crowd_music_gig-100440.jpg!d", "https://c.pxhere.com/photos/07/b8/bar_drinks_alcohol_restaurant_pub-1205054.jpg!d"].sample
     )
   event.save!
 end
@@ -93,6 +94,13 @@ puts "creating sample organiser (organiser@gmail.com // pass : organiserpassword
     is_organiser: true,
   )
     user.save!
+
+    organiser = Organiser.new(
+      user_id: user.id,
+      name: Faker::TwinPeaks.character
+      )
+    organiser.save!
+
 puts "done"
 
 puts "creating sample band (band@gmail.com // pass : bandpassword)"
@@ -103,4 +111,14 @@ puts "creating sample band (band@gmail.com // pass : bandpassword)"
     is_organiser: false,
   )
     user.save!
+
+    band = Band.new(
+      user_id: user.id,
+      name: Faker::RockBand.name,
+      content: Faker::StarWars.quote,
+      pictures: "http://igloomusic.co.uk/wp-content/uploads/2014/09/my-band.jpg",
+      soundcloud: "https://soundcloud.com/deadmau5",
+      location: Faker::Address.full_address
+      )
+    band.save!
 puts "done"
