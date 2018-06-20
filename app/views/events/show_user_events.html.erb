@@ -1,0 +1,17 @@
+<div id="wrap-content">
+  <h1>Events organised</h1>
+<% if !current_user.nil? && current_user.is_organiser? %>
+  <h4><%= link_to 'Create a new event', new_event_path %></h4><% end %>
+<% if @events.empty? %>
+  <h2> You don't have any events yet …</h2>
+  <% else %>
+  <% @events.each do |event| %>
+    <section class="card">
+    <h1><%= link_to event.name, event_path(event) %></h1>
+    <h2><%= event.city.capitalize %></h2>
+    <h3>Organised by <%= event.organiser.name %></h3>
+    <h4>From <%= event.date_begin %> to <%= event.date_end %></h4>
+  <% end %>
+<% end %>
+</section>
+</div>

@@ -70,8 +70,9 @@ ActiveRecord::Schema.define(version: 2018_06_18_133057) do
     t.text "equipment"
     t.integer "price"
     t.text "commodities"
+    t.string "city"
     t.string "location"
-    t.string "pictures"
+    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organiser_id"], name: "index_events_on_organiser_id"

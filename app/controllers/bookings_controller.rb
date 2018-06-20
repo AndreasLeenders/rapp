@@ -54,6 +54,14 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:status)
   end
 
+  def set_band
+    @band = Band.find(params[:band_id])
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
+
   def set_booking
     @booking = booking.find(params[:id])
   end
