@@ -1,13 +1,14 @@
-<h1>edit bands</h1>
-<%= simple_form_for [@band] do |f| %>
-<%= f.input :name %>
-<%= f.button :submit %>
-<%= f.input :name%>
-<%= f.input :content%>
-<%= f.input :pictures%>
-<%= f.input :soundcloud%>
-<%= f.input :location%>
-<% end %>
-
-<%= link_to 'Show', @band %> |
-<%= link_to 'Back', band_path %>
+<div id="wrap-content">
+  <h4><%= link_to "Back to band page", bands_path %><%= link_to 'Show', band_path(@band) %></h4>
+  <h1>edit bands</h1>
+  <div class="rapp-form">
+    <%= simple_form_for [@band] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :content %>
+      <%= f.input :pictures %>
+      <%= f.input :soundcloud %>
+      <%= f.input :location %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

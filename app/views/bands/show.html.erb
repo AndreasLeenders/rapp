@@ -1,7 +1,6 @@
-<%= @band.name %> </h1>
-  <%= link_to "Delete", band_path(@band), method: :delete %>
-    <%= link_to "Edit", edit_band_path(@band) %>
-    <%= link_to "Go back", bands_path %>
-
-
-    
+<div id="wrap-content">
+  <h1> <%= @band.name %> </h1>
+  <%= link_to "Delete", bands_path(@band), method: :delete %>
+  <%= link_to "Edit band", edit_band_path(@band) %>
+  <%= link_to "Back to band page", bands_path %>
+</div>

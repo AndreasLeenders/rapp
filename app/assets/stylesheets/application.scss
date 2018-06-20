@@ -34,3 +34,36 @@ h1 {
   padding-bottom: 15px;
   color: black;
 }
+
+.rapp-form form {
+  width: 500px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 50px;
+  margin: 0px auto;
+}
+
+.rapp-form label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px;
+}
+
+.rapp-form .btn {
+  background-color: white;
+  color: black;
+  width: 50%;
+  border-radius: none;
+  transition-duration: 0.4s;
+}
+
+.rapp-form .btn:hover {
+  background-color: rgb(210, 210, 210);
+}
+
+.session-link {
+  text-align: center;
+  margin: 20px;
+}

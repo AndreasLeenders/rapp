@@ -1,8 +1,6 @@
-<%= link_to "Add Band", new_band_path, id: "band-add-button"%>
+<div id="wrap-content">
   <% @bands.each do |band| %>
-<h2> <%= link_to band.name, band_path(band) %> </h2>
-     <% end %>
-
-   
-       
+    <h2><%= link_to band.name, band_path(band) %></h2>
+  <% end %>
+</div>
 

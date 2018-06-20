@@ -1,4 +1,4 @@
-<div>
+<div class="rapp-form">
 <%= simple_form_for @event do |f| %>
   <% if @event.errors.any? %>
     <div class="errors-container">
@@ -18,7 +18,7 @@
 <%= f.input :commodities %>
 <%= f.input :city %>
 <%= f.input :location %>
-<%= f.input :pictures %>
+<%= f.input :picture %>
 <%= f.submit %>
 <% end %>
 </div>
