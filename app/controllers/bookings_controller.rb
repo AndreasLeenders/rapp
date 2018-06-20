@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
 
+
+
   def index
     if current_user.is_band
     @bookings = []
@@ -25,6 +27,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = booking.find(params[:event_id])
     @booking = Booking.new(booking_params)
     @booking.band_id = @band
     if @booking.save
@@ -56,6 +59,6 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = booking.find(params[:event_id])
   end
 end
