@@ -1,12 +1,13 @@
 <div id="wrap-content">
   <h1>Events organised</h1>
+  <div id="map" style="width: 100%; height: 300px; margin: 10px auto;" data-markers="<%= @markers.to_json %>"></div>
   <% if !current_user.nil? && current_user.is_organiser? %>
     <h4><%= link_to 'Create a new event', new_event_path %></h4>
   <% end %>
   <div id="card-container">
     <% @events.each do |event| %>
       <section class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= event.picture %>'); background-size: cover;">
-        <h3><%= event.city.capitalize %></h3>
+        <h3><%= event.address.split(",").each(&:lstrip!)[1].capitalize %></h3>
         <h2><%= link_to event.name, event_path(event) %></h2>
         <h4>
           <%= event.date_begin.strftime("From %b %e, %l:%M %p") %>

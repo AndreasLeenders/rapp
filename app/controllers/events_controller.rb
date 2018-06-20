@@ -2,11 +2,25 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
   def index
-    @events = Event.all
+    @events = Event.where.not(latitude: nil, longitude: nil)
+
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+      }
+    end
   end
 
   def show
-    @event
+    @event = Event.find(params[:id])
+      @marker =
+        {
+          lat: @event.latitude,
+          lng: @event.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+        }
   end
 
   def show_user_events
@@ -53,7 +67,15 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.where ("city LIKE '%#{params[:event][:city].downcase}%'")
+    @events = Event.where ("address LIKE '%#{params[:event][:city].downcase}%'")
+
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+      }
+    end
   end
 
   private
@@ -71,6 +93,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :city, :location, :pictures)
+    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :city, :pictures)
   end
 end

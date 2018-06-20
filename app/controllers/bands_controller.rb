@@ -1,7 +1,7 @@
 class BandsController < ApplicationController
-   before_action :set_band, only: [:show, :destroy, :edit]
-  
-  def index 
+   before_action :set_band, only: [:show, :destroy, :edit, :update]
+
+  def index
    @bands = Band.all
   end
 
@@ -37,6 +37,7 @@ class BandsController < ApplicationController
      redirect_to band_path(@band), notice: 'Band was successfully updated.'
     else
        render :edit
+       redirect_to edit_band_path
     end
    end
 
