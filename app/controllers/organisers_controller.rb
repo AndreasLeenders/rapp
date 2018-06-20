@@ -1,14 +1,14 @@
 class OrganisersController < ApplicationController
 
-  before_action :set_user
+  before_action :set_organiser
 
   def new
     @organiser = Organiser.new
   end
 
   def create
-    @organiser = organiser.new(organiser_params)
-    @organiser.restaurant = @restaurant
+    @organiser = Organiser.new(organiser_params)
+
     if @organiser.save
       redirect_to organiser_path(@organiser),  notice: 'Organiser was successfully created.'
     else
@@ -21,15 +21,14 @@ class OrganisersController < ApplicationController
   end
 
   def update
-    if @organiser.update(organiser_params)
-      redirect_to organiser_path(@organiser), notice: 'Organiser was successfully updated.'
-    else
-      render :edit
-    end
+    @organiser.update(organiser_params)
+    #   redirect_to organiser_path(@organiser), notice: 'Organiser was successfully updated.'
+    # else
+    #   render :edit
+    # end
   end
 
   def show
-    @user = current_user.id
 
   end
 
@@ -47,7 +46,7 @@ class OrganisersController < ApplicationController
     params.require(:organiser).permit(:name)
   end
 
-  def set_user
-    @user = current_user.id
+  def set_organiser
+    @organiser = Organiser.find(params[:id])
   end
 end

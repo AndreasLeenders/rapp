@@ -1,26 +1,20 @@
-<h1>Events organised</h1>
-<h4><%= link_to 'Create a new event', new_event_path %>
-<% @events.each do |event| %>
-<h1><%= link_to event.name, event_path(event) %></h1>
-<h3>Organised by <%= event.organiser.name %></h3>
-<h4>From <%= event.date_begin %> to <%= event.date_end %></h4>
-<% end %>
-
-
-
-<!--
-    create_table "events", force: :cascade do |t|
-    t.bigint "organiser_id"
-    t.string "name"
-    t.datetime "date_begin"
-    t.datetime "date_end"
-    t.integer "capacity"
-    t.text "equipment"
-    t.integer "price"
-    t.text "commodities"
-    t.string "location"
-    t.string "pictures"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["organiser_id"], name: "index_events_on_organiser_id"
-  end -->
+<div id="wrap-content">
+  <h1>Events organised</h1>
+  <% if !current_user.nil? && current_user.is_organiser? %>
+    <h4><%= link_to 'Create a new event', new_event_path %></h4>
+  <% end %>
+  <div id="card-container">
+    <% @events.each do |event| %>
+      <section class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= event.picture %>'); background-size: cover;">
+        <h3><%= event.city.capitalize %></h3>
+        <h2><%= link_to event.name, event_path(event) %></h2>
+        <h4>
+          <%= event.date_begin.strftime("From %b %e, %l:%M %p") %>
+          <br>
+          <%= event.date_end.strftime("To %b %e, %l:%M %p") %>
+        </h4>
+        <h5>Organised by <%= event.organiser.name %></h5>
+      </section>
+    <% end %>
+  </div>
+</div>

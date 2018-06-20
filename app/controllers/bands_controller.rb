@@ -1,7 +1,9 @@
 class BandsController < ApplicationController
+
    before_action :set_band, only: [:show, :destroy, :edit]
  
   def index 
+
    @bands = Band.all
 
   end
@@ -21,7 +23,7 @@ class BandsController < ApplicationController
     redirect_to bands_path
   end
   end
- 
+
   def create
    @band = Band.new(band_params)
    @band.user = current_user

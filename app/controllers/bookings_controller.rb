@@ -53,7 +53,7 @@ class BookingsController < ApplicationController
   end
 
   def set_user
-  @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
   end
 
   def set_booking
