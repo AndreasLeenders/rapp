@@ -1,6 +1,10 @@
-<h1>Editing Bands</h1>
-
-<%= render 'form', band: @band %>
-
-<%= link_to 'Show', @band %> |
-<%= link_to 'Back', band_path %>
+<h1>edit bands</h1>
+<%= simple_form_for [@band] do |f| %>
+<%= f.input :name %>
+<%= f.button :submit %>
+<%= f.input :name%>
+<%= f.input :content%>
+<%= f.input :pictures%>
+<%= f.input :soundcloud%>
+<%= f.input :location%>
+<% end %>
