@@ -129,6 +129,7 @@ puts "creating booking"
         band_id: band.id,
         event_id: Event.all.sample.id,
         status: ['pending', 'accepted', 'refused', 'cancelled'].sample,
+        message: "this is a message"
     )
   booking.save!
 

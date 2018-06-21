@@ -17,14 +17,20 @@ class OrganisersController < ApplicationController
   end
 
   def edit
-
+    if is_band?
+    puts "you are not allowed to access"
+    redirect_to organisers_path
+    end
   end
 
   def update
-    @organiser.update(organiser_params)
-    #   redirect_to organiser_path(@organiser), notice: 'Organiser was successfully updated.'
-    # else
-    #   render :edit
+   # if !is_band?
+    if @organiser.update(organiser_params)
+     redirect_to organiser_path(@organiser), notice: 'organiser was successfully updated.'
+    else
+       render :edit
+       redirect_to edit_organiser_path
+     end
     # end
   end
 
@@ -48,5 +54,9 @@ class OrganisersController < ApplicationController
 
   def set_organiser
     @organiser = Organiser.find(params[:id])
+  end
+
+  def is_band?
+    return true if current_user.is_band == true
   end
 end

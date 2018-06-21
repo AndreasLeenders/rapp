@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :bookings
 
   get "/my_bookings", to: "bookings#index", as: "my_bookings"
+
   devise_for :users, controllers: { registrations: "registrations" }
   root to: 'pages#home'
 end
