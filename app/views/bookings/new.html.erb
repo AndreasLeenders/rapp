@@ -1,7 +1,8 @@
 <h3>Add a new booking</h3>
 <div class="rapp-form">
-  <%= form_for [@band, @booking] do |f| %>
+  <%= form_for [@event, @booking] do |f| %>
     <%= f.select :status, [['Pending'],['Accepted'],['Refused']] %>
+
     <%= f.submit %>
   <% end %>
 </div>

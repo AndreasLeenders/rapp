@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   def index
     if current_user.is_band
     @bookings = current_user.band.bookings
-    else
+    elsif current_user.is_organiser
     @bookings = current_user.organiser.bookings
     end
   end
@@ -15,14 +15,15 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @band = Band.find(params[:band_id])
+    @event = Event.find(params[:event_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.band_id = @band
+    @booking.band = current_user.band
+    @booking.event = Event.find(params[:event_id])
     if @booking.save
-      redirect_to band_booking_path(@booking.band)
+      redirect_to "/my_bookings"
     else
       render :new
     end
@@ -45,8 +46,10 @@ class BookingsController < ApplicationController
 
   private
 
+
+
   def booking_params
-    params.require(:booking).permit(:status)
+    params.require(:booking).permit(:status, :event_id, :band_id)
   end
 
   def set_booking
