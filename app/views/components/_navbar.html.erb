@@ -25,7 +25,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
          <% if !current_user.nil? && current_user.is_organiser %>
             <li><%= link_to "My profile", organiser_path(Organiser.find_by user_id: current_user.id) %></li>
-            <li><%= link_to "My event", my_events_path %></li>
+            <li><%= link_to "My events", my_events_path %></li>
             <li><a href="">#Bookings</a></li>
           <% elsif !current_user.nil? && current_user.is_band %>
             <li><%= link_to "My profile", band_path(Band.find_by user_id: current_user.id) %></li>
