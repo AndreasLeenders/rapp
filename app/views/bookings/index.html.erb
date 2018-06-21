@@ -1,29 +1,22 @@
  <div style='margin-top:  100px;'></div>
 <div class="message">
-
+  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
   <div class="message-name">
-    <% if current_user.band %>
-    <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
     <%  @bookings.each do |booking|%>
-    <h3> Event: <%= booking.event.name %></h3>
-    <h3> Price: <%= booking.event.price %> </h3>
-    <h3>Status: <%= booking.status %></h3>
-    <% end %>
-    <% elsif current_user.organiser %>
-    <img class="avatar-large" src="https://www.google.com/imgres?imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D79633725271&imgrefurl=https%3A%2F%2Fwww.facebook.com%2Fu-moeder-79633725271%2F&docid=6voayF4BxRdqJM&tbnid=vCztcnO6A0sgrM%3A&vet=10ahUKEwi1kqCiv-LbAhVjzoMKHX8aAbQQMwhoKCowKg..i&w=361&h=481&client=ubuntu&bih=982&biw=1855&q=u%20moeder&ved=0ahUKEwi1kqCiv-LbAhVjzoMKHX8aAbQQMwhoKCowKg&iact=mrc&uact=8">
-    <%  current_user.organiser.bookings.each do |booking|%>
-
-    <h3> Band: <%= booking.band.name %></h3>
-    <h3> Price: <%= booking.event.price %> </h3>
-    <h3>Status: <%= booking.status %></h3>
-    <% end %>
-    <% end %>
-
+    <h3> <%= booking.event.organiser.name %></h3>
   </div>
   <div class="message-body">
-    <p><strong>I am not sure yet!</strong></p>
+    <p><strong>booking . message needs to come here</strong></p>
     <p>
       Booking message needs to be here but it is not...
     </p>
   </div>
+  <div class="message-status">
+    <p class="status pending"><h3>Status: <%= booking.status %></h3></p>
+    <p class="price"><%= booking.event.price %></p>
+  </div>
+  <% end %>
 </div>
+
+
+
