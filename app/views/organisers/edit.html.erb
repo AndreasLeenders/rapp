@@ -1,5 +1,7 @@
-<%= simple_form_for [@organiser] do |f| %>
+<div class="rapp-form">
+<%= simple_form_for [@organiser], method: :patch do |f| %>
 <h2>Chose a username</h2>
 <%= f.input :name %>
 <%= f.button :submit %>
 <% end %>
+</div>

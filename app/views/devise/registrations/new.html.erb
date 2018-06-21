@@ -8,7 +8,12 @@
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
-    <%= f.input :is_band%>
+    <%= f.input :is_band, as: :radio_buttons  %>
+    <% if :is_band == true %>
+    <% :is_organisers == false %>
+    <% else :is_band == false %>
+    <% :is_organisers == true %>
+    <% end %>
   </div>
 
   <div class="form-actions">

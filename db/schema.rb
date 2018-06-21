@@ -39,7 +39,8 @@ ActiveRecord::Schema.define(version: 2018_06_20_103343) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "band_id"
     t.bigint "event_id"
-    t.string "status"
+    t.string "status", default: "pending"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_bookings_on_band_id"
