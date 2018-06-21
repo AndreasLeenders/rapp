@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_103343) do
+ActiveRecord::Schema.define(version: 2018_06_21_091926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_06_20_103343) do
     t.bigint "user_id"
     t.string "name"
     t.text "content"
-    t.string "pictures"
+    t.string "pictures", default: "https://static1.squarespace.com/static/55fc0004e4b069a519961e2d/t/55fc301ae4b01342ae9212a1/1442590746805/?format=500w"
     t.string "soundcloud"
     t.string "location"
     t.datetime "created_at", null: false
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_06_20_103343) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture", default: "https://static1.squarespace.com/static/55fc0004e4b069a519961e2d/t/55fc301ae4b01342ae9212a1/1442590746805/?format=500w"
     t.index ["user_id"], name: "index_organisers_on_user_id"
   end
 

@@ -1,17 +1,23 @@
 <div id="wrap-content">
   <h1>Events organised</h1>
-<% if !current_user.nil? && current_user.is_organiser? %>
-  <h4><%= link_to 'Create a new event', new_event_path %></h4><% end %>
-<% if @events.empty? %>
-  <h2> You don't have any events yet …</h2>
-  <% else %>
-  <% @events.each do |event| %>
-    <section class="card">
-    <h1><%= link_to event.name, event_path(event) %></h1>
-    <h2><%= event.address.split(",").each(&:lstrip!)[1].capitalize %></h2>
-    <h3>Organised by <%= event.organiser.name %></h3>
-    <h4>From <%= event.date_begin %> to <%= event.date_end %></h4>
-  <% end %>
-<% end %>
-</section>
+  <% if !current_user.nil? && current_user.is_organiser? %>
+    <h4><%= link_to 'Create a new event', new_event_path %></h4><% end %>
+    <% if @events.empty? %>
+      <h2> You don't have any events yet …</h2>
+    <% else %>
+      <div id="card-container">
+      <% @events.each do |event| %>
+        <section class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= event.picture %>'); background-size: cover;">
+          <h3><%= event.city.capitalize %></h3>
+          <h2><%= link_to event.name, event_path(event) %></h2>
+          <h4>
+            <%= event.date_begin.strftime("From %b %e, %l:%M %p") %>
+            <br>
+            <%= event.date_end.strftime("To %b %e, %l:%M %p") %>
+          </h4>
+          <h5>Organised by <%= event.organiser.name %></h5>
+        </section>
+      <% end %>
+      </div>
+    <% end %>
 </div>
