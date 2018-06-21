@@ -120,3 +120,16 @@ h1 {
   transform: scale(1.2);
   text-decoration: none;
 }
+
+.search-result {
+  width: 100%;
+  border: 3px solid black;
+}
+
+
+.band-result {
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+}

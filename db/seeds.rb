@@ -45,7 +45,7 @@ puts "creating bands"
     name: Faker::RockBand.name,
     content: Faker::StarWars.quote,
     pictures: ["https://i.pinimg.com/originals/70/51/80/7051808b359b3fa1a96040193ea7c4ef.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Arena_%28band%29.jpg/1200px-Arena_%28band%29.jpg", "http://iceagecopenhagen.eu/images/bandphoto.jpg", "http://mediad.publicbroadcasting.net/p/ketr/files/styles/x_large/public/201706/The_Band_of_Heathens_Credit-Greg-Giannukos-1.jpg"].sample,
-    soundcloud: "https://soundcloud.com/deadmau5",
+    soundcloud: rand(200000000..300000000),
     location: Faker::Address.full_address,
     )
   band.save!
@@ -118,7 +118,7 @@ puts "creating sample band (band@gmail.com // pass : bandpassword)"
       name: Faker::RockBand.name,
       content: Faker::StarWars.quote,
       pictures: "http://igloomusic.co.uk/wp-content/uploads/2014/09/my-band.jpg",
-      soundcloud: "https://soundcloud.com/deadmau5",
+      soundcloud: 203410014,
       location: Faker::Address.full_address
       )
     band.save!

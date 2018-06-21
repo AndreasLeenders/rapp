@@ -8,7 +8,12 @@ class BandsController < ApplicationController
 
   def show
    @band = Band.find(params[:id].to_i)
-
+   @markers = [
+        {
+          lat: @band.latitude,
+          lng: @band.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+        } ]
   end
 
   def new
