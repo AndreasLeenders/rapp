@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
+
   def index
     @events = Event.where.not(latitude: nil, longitude: nil)
 
@@ -15,13 +16,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-      @markers = [
+      @marker = [
         {
           lat: @event.latitude,
           lng: @event.longitude#,
           # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
         } ]
-
   end
 
   def show_user_events
@@ -39,7 +39,9 @@ class EventsController < ApplicationController
   end
 
   def update
-    if is_organiser? && current_user.id == @event.organiser_id
+
+    organiser = Organiser.find_by user_id: current_user.id
+    if is_organiser? && organiser.id == @event.organiser_id
       if @event.update(event_params)
        redirect_to event_path(@event)
       else
@@ -94,6 +96,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :city, :pictures)
+    params.require(:event).permit(:name, :date_begin, :date_end, :capacity, :equipment, :price, :commodities, :address, :city, :picture)
   end
 end
