@@ -78,3 +78,30 @@ h1 {
   margin: 10px 0px 10px 0px;
 }
 
+.banner {
+  color: white;
+  text-align: center;
+  height: 125vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+}
+
+.grow a {
+  color: white;
+  font-family: "IBM Plex Sans", Helvetica, sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+
+  text-height: 10px;
+}
+
+ .grow:hover {
+  -webkit-transform: scale(0.7);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  text-decoration: none;
+}
