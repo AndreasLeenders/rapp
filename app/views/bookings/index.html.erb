@@ -1,20 +1,22 @@
-
-
+ <div style='margin-top:  100px;'></div>
 <div class="message">
   <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
   <div class="message-name">
-    <% current_user.is_band %>
-    <% @bookings = current_user.band.bookings %>
-    <% @bookings.each do |booking|%>
-   <h3> Event: <%= booking.event.name %></h3>
-    <h3> Price: <%= booking.event.price %> </h3>
-    <h3>Status: <%= booking.status %></h3>
-    <% end %>
+    <%  @bookings.each do |booking|%>
+    <h3> <%= booking.event.organiser.name %></h3>
   </div>
   <div class="message-body">
-    <p><strong>I am not sure yet!</strong></p>
+    <p><strong>booking . message needs to come here</strong></p>
     <p>
       Booking message needs to be here but it is not...
     </p>
   </div>
+  <div class="message-status">
+    <p class="status pending"><h3>Status: <%= booking.status %></h3></p>
+    <p class="price"><%= booking.event.price %></p>
+  </div>
+  <% end %>
 </div>
+
+
+

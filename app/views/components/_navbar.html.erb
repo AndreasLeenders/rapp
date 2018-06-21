@@ -7,29 +7,30 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <%= link_to "– Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Browse bands", bands_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% if current_user.nil? %>
     <%= link_to "– Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% else %>
-      <% if current_user.is_band %>
-      <%= link_to "– Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% elsif current_user.is_organiser %>
-      <%= link_to "– Browse bands", bands_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
     <% end %>
 
     <% if !current_user.nil? %>
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
+        <% if current_user.is_organiser %>
         <img src="https://c.pxhere.com/photos/ae/db/music_concert_singer_band_guitar-314.jpg!d" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <% elsif current_user.is_band %>
+        <% band = Band.find_by user_id:current_user.id %>
+          <img src="<%= band.pictures %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-         <% if !current_user.nil? && current_user.is_organiser %>
-            <li><%= link_to "My profile", organiser_path(Organiser.find_by user_id: current_user.id) %></li>
+         <% if current_user && current_user.is_organiser %>
+            <li><%= link_to "My profile", my_profile_path %></li>
             <li><%= link_to "My events", my_events_path %></li>
-            <li><a href="">#Bookings</a></li>
-          <% elsif !current_user.nil? && current_user.is_band %>
-            <li><%= link_to "My profile", band_path(Band.find_by user_id: current_user.id) %></li>
-            <li><a href="#">Bookings</a></li>
+            <li><%= link_to "My bookings", my_bookings_path %></li>
+          <% elsif current_user && current_user.is_band %>
+            <li><%= link_to "My profile", band_path(current_user.band) %></li>
+            <li><%= link_to "My bookings", my_bookings_path %></li>
           <% end %>
             <li><%= link_to destroy_user_session_path, method: :delete do %>
                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
