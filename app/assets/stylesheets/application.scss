@@ -96,8 +96,7 @@ h1 {
 .banner {
   color: white;
   text-align: center;
-  height: 125vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  height: 100vh;
   background-size: cover !important;
   display: flex;
   align-items: center;
