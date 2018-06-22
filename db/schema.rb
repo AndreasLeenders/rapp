@@ -103,13 +103,11 @@ ActiveRecord::Schema.define(version: 2018_06_21_151912) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.bigint "band_id"
-    t.bigint "event_id"
-    t.string "content"
+    t.bigint "booking_id"
+    t.float "stars"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["band_id"], name: "index_ratings_on_band_id"
-    t.index ["event_id"], name: "index_ratings_on_event_id"
+    t.index ["booking_id"], name: "index_ratings_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -140,6 +138,5 @@ ActiveRecord::Schema.define(version: 2018_06_21_151912) do
   add_foreign_key "event_categories", "events"
   add_foreign_key "events", "organisers"
   add_foreign_key "organisers", "users"
-  add_foreign_key "ratings", "bands"
-  add_foreign_key "ratings", "events"
+  add_foreign_key "ratings", "bookings"
 end
