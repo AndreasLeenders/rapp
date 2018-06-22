@@ -2,7 +2,7 @@
 .banner {
   height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #search {
@@ -40,6 +40,7 @@
   font-family: "IBM Plex Sans", "Helvetica", sans-serif;
   font-size: 3em;
   font-weight: 700;
+  width: 60%;
 }
 
 .shadowed-text {
