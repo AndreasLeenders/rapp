@@ -1,8 +1,18 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= ["https://images.pexels.com/photos/154147/pexels-photo-154147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/248963/pexels-photo-248963.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/167480/pexels-photo-167480.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://c.pxhere.com/photos/86/5f/concert_band_crowd_music_gig-100440.jpg!d", "https://c.pxhere.com/photos/07/b8/bar_drinks_alcohol_restaurant_pub-1205054.jpg!d"].sample %>');">
   <div id="intro">
-    <span class="shadowed-text">
-    Welcome to Rapp ! Discover all the events your band can apply to
-    </span>
+    <% if current_user.is_organiser %>
+      <span class="shadowed-text">
+        Welcome, <%= current_user.organiser.name %> !
+      </span>
+    <% elsif current_user.is_band %>
+      <span class="shadowed-text">
+        Welcome, <%= current_user.band.name %> !
+      </span>
+    <% else %>
+      <span class="shadowed-text">
+        Welcome to Rapp ! Discover all the events your band can apply to
+      </span>
+    <% end %>
   </div>
   <br>
   <div id="search">

@@ -5,17 +5,21 @@
   </div>
   <div id="info-container">
     <div id="map-container">
-    <iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/<%= @band.soundcloud %>&color=%232a2a2a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    <iframe width="100%" height="49%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/<%= @band.soundcloud %>&color=%232a2a2a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    <div id="map" class="half-page-right" data-markers="<%= @markers.to_json %>"></div>
     </div>
     <div id="content-container">
-      <strong><%= @band.content %></strong>
       <% if current_user && current_user.is_band && current_user.band.id == @band.id %>
-        <ul>
-          <li><%= link_to "Edit", edit_band_path(@band) %></li>
-          <li><%= link_to "Delete", band_path, method: :delete, data: { confirm: "Do you want to delete this band ?"} %></li>
-          <% end %>
-        </ul>
-        <div id="map" class="half-page-left" data-markers="<%= @markers.to_json %>"></div>
+          <div class="btn-container">
+            <%= link_to edit_band_path(@band) do %>
+              <span class="default-btn"><i class="far fa-edit"></i> Edit</span>
+              <% end %>
+            <%= link_to band_path, method: :delete, data: { confirm: "Do you want to delete this band ?"} do %>
+            <span class="default-btn"><i class="far fa-trash-alt"></i> Delete</span>
+            <% end %>
+          </div>
+      <% end %>
+      <h3><%= @band.content %></h3>
     </div>
   </div>
   <i class="fas fa-arrow-left"></i>

@@ -19,6 +19,7 @@
 @import "components/map";
 
 body {
+  font-family: "IBM Plex Sans", Helvetica, sans-serif;
 }
 
 #wrap-content {
@@ -40,6 +41,7 @@ h1 {
 }
 
 .rapp-form form {
+  height: 100%;
   width: 500px;
   background-color: black;
   color: white;
@@ -55,16 +57,52 @@ h1 {
   padding: 10px;
 }
 
+.rapp-form input {
+  border-radius: 0px 0px;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.rapp-form textarea {
+  border-radius: 0px 0px;
+  border: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.rapp-form h2 {
+  margin:0;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-bottom: 3px dotted white;
+  padding-bottom: 10px;
+}
+
 .rapp-form .btn {
   background-color: white;
   color: black;
   width: 50%;
   border-radius: none;
   transition-duration: 0.4s;
+  margin-top: 20px;
 }
 
 .rapp-form .btn:hover {
   background-color: rgb(210, 210, 210);
+}
+
+.rapp-form select {
+  background-color: black;
 }
 
 .session-link {
@@ -78,13 +116,19 @@ h1 {
   margin: 10px 0px 10px 0px;
 }
 
+.btn-container {
+  display: flex;
+}
+
 .default-btn {
+  font-family: "IBM Plex Sans", Helvetica, sans-serif;
+  text-align: center;
   background-color: black;
   color: white;
   padding: 15px;
-  margin: 10px;
-  min-width: 280px;
-  font-size: 0.5em;
+  margin-right: 10px;
+  width: 100px;
+  font-size: 1em;
   &:hover {
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25) !important;
     color: white;
@@ -121,14 +165,24 @@ h1 {
 }
 
 .search-result {
+  margin-top: 20px;
   width: 100%;
   border: 3px solid black;
+  display: flex;
 }
 
 
 .band-result {
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 30px 10px 10px 0px;
   background-color: black;
-  border-radius: 5px;
-  padding: 10px;
-  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  a {
+    color: white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
