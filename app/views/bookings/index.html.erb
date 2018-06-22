@@ -1,5 +1,5 @@
-<div style='margin-top:  100px;'>
-  <% if current_user.is_band  %>
+<div id="wrap-content">
+  <% if current_user.is_band %>
   <%  @bookings.each do |booking|%>
   <div class="message">
     <img class="avatar-large" src=<%= booking.event.picture %>>

@@ -1,14 +1,12 @@
-<div id="star"></div>
+<div id="wrap-content">
 <div class="rapp-form">
-
-
 <%= simple_form_for [@booking, @rating] do |f| %>
-
-
+<h2>Your rating</h2>
 <% f.error.notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :stars, collection: 0..5 %>
+  <%= f.input :stars, collection: 0..5, as: :radio_buttons, label: "0 = minimum", boolean_style: :inline %>
 
   <%= f.submit class: "btn btn-primary"%>
 <% end %>
+</div>
 </div>

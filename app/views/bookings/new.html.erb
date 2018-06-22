@@ -1,8 +1,16 @@
-<div style="margin-top: 85px">
+<div id="wrap-content">
 <div class="rapp-form">
   <%= simple_form_for [@event, @booking] do |f| %>
-    <%= f.input :message %>
+    <h2>Request a booking for this event</h2>
+    <strong><%= @event.name %></strong>
+    <h4>
+      <%= @event.date_begin.strftime("%b %e") %>
+      <i class="fas fa-arrow-right"></i>
+      <%= @event.date_end.strftime("%b %e") %>
+    </h4>
+    <%= f.input :message, label: "Add a message" %>
     <%= f.submit %>
   <% end %>
+</div>
 </div>
 </div>

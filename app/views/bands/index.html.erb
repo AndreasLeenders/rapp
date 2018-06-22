@@ -1,12 +1,13 @@
 <div id="wrap-content">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 60%), url('https://cdn.dribbble.com/users/754899/screenshots/3961207/aura_004.png');">
-    <div class="banner-content">
+  <h1>Bands list</h1>
+  <div id="map" class="card" style="width: 100%; height: 300px; margin: 10px auto;" data-markers="<%= @markers.to_json %>"></div>
+
+  <div id="card-container row">
+    <% @bands.each do |band| %>
+      <section class="col-6 col-xs-4 card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= band.pictures %>'); background-size: cover;">
+        <h3><%= band.location.split(',').map(&:lstrip)[1].capitalize %></h3>
+        <h2><%= link_to band.name, band_path(band) %></h2>
+      </section>
+    <% end %>
   </div>
-
-  <div class="grow">
-  <% @bands.each do |band| %>
-    <h2><%= link_to band.name, band_path(band) %></h2>
-  <% end %>
 </div>
-</div>
-
