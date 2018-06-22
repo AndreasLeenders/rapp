@@ -1,5 +1,5 @@
 <div style='margin-top:  100px;'>
-  <% if current_user.is_band %>
+  <% if current_user.is_band  %>
   <%  @bookings.each do |booking|%>
   <div class="message">
     <img class="avatar-large" src=<%= booking.event.picture %>>
@@ -13,7 +13,7 @@
         <strong>You:</strong> <%= booking.message %>
       </p>
       <p>
-        <strong>Organiser: </strong><%= booking.answer %>
+        <strong>Organiser:</strong> <%= booking.answer %>
       </p>
     </div>
     <div class="message-status">
