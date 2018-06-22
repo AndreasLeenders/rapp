@@ -20,6 +20,7 @@
           </div>
       <% end %>
       <h3><%= @band.content %></h3>
+      <h3>Average rating of the band : <%= if @band.bookings.rating.nil? %> No ratings yet <%= else @band.bookings.rating.count end %>
     </div>
   </div>
   <%= link_to bands_path, class: "breadcrumb" do %>
