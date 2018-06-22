@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   end
 
   get '/my_events', to: 'events#show_user_events', as: 'my_events'
-  get '/my_profile', to: 'profile#show_organiser_profile', as: 'my_profile'
 
 
-
+  resources :organisers
   resources :bands
   resources :bookings
 

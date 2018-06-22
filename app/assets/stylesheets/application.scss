@@ -15,7 +15,7 @@
 @import "pages/index";
 
 @import "components/quarter-screen-banner";
-@import "components/messages";
+@import "components/message";
 @import "components/map";
 
 body {
@@ -96,8 +96,7 @@ h1 {
 .banner {
   color: white;
   text-align: center;
-  height: 125vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  height: 100vh;
   background-size: cover !important;
   display: flex;
   align-items: center;
@@ -119,4 +118,17 @@ h1 {
   -ms-transform: scale(1.2);
   transform: scale(1.2);
   text-decoration: none;
+}
+
+.search-result {
+  width: 100%;
+  border: 3px solid black;
+}
+
+
+.band-result {
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
 }

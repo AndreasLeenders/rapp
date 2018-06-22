@@ -39,9 +39,10 @@
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
+  border: 3px solid black;
 }
 
 /* Right section */
@@ -72,20 +73,21 @@
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #E6E6E6;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  border: 3px solid black;
 }
 .navbar-wagon-dropdown-menu li > a {
+  font-family: "IBM Plex Sans", "Helvetica", sans-serif;
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: black !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  color: rgb(50, 50, 50) !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
@@ -96,8 +98,8 @@
   top: -6px;
   background-color: white;
   transform: rotate(45deg);
-  border-left: 1px solid #E6E6E6;
-  border-top: 1px solid #E6E6E6;
+  border-left: 3px solid black;
+  border-top: 3px solid black;
 }
 
 .text {

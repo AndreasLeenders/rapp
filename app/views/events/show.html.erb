@@ -1,7 +1,7 @@
 <div id="wrap-content">
   <div class="quarter-screen-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= @event.picture %>'); background-size: cover; background-position: center;">
     <h1 class="cover-image title"><%= @event.name %></h1><br>
-    <h2 class="cover-image subtitle"><%= @event.address.split(",").each(&:lstrip!)[1].capitalize %></h2>
+    <h2 class="cover-image subtitle"><%= @event.city.capitalize %></h2>
   </div>
   <% if !current_user.nil? %>
     <% organiser = Organiser.where("user_id = #{current_user.id}") %>
@@ -24,7 +24,8 @@
       <li>Price: <%= @event.price %>€</li>
     </ul>
     <h3>
-      <% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event), class: "default-btn" %><%= link_to "Delete", event_path(@event), method: :delete, class: "default-btn" %><% elsif current_user.is_band %><%= link_to "Request a booking", new_event_booking_path(@event), class: "request-btn" %><% end %>
+      <% if current_user && current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event), class: "default-btn" %><%= link_to "Delete", event_path(@event), method: :delete, class: "default-btn" %>
+      <% elsif current_user && current_user.is_band %><%= link_to "Request a booking", new_event_booking_path(@event), class: "request-btn" %><% end %>
     </h3>
     </div>
   </div>

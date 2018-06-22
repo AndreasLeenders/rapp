@@ -1,20 +1,44 @@
- <div style='margin-top:  100px;'></div>
-<div class="message">
-  <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-  <div class="message-name">
-    <%  @bookings.each do |booking|%>
-    <h3> <%= booking.event.organiser.name %></h3>
+<div style='margin-top:  100px;'>
+  <% if current_user.is_band %>
+  <%  @bookings.each do |booking|%>
+  <div class="message">
+    <img class="avatar-large" src=<%= booking.event.picture %>>
+    <div class="message-name">
+      <h3> <%= booking.event.name %></h3>
+      <p><%= booking.created_at%></p>
+    </div>
+    <div class="message-body">
+      <p><strong>Booking request</strong></p>
+      <p>
+        <%= booking.message %>
+      </p>
+    </div>
+    <div class="message-status">
+      <p class="status <%= booking.status %>"><%= booking.status %></p>
+      <p class="price">€<%= booking.event.price %></p>
+    </div>
   </div>
-  <div class="message-body">
-    <p><strong>booking . message needs to come here</strong></p>
-    <p>
-      Booking message needs to be here but it is not...
-    </p>
+  <% end %>
+  <% elsif current_user.is_organiser %>
+  <%  @bookings.each do |booking|%>
+  <div class="message">
+    <img class="avatar-large" src=<%= booking.band.pictures %>>
+    <div class="message-name">
+      <h3> <%= booking.event.name%></h3>
+      <p><%= booking.created_at %></p>
+    </div>
+    <div class="message-body">
+      <p><strong>Booking request</strong></p>
+      <p>
+        <%= booking.message %>
+      </p>
+    </div>
+    <div class="message-status">
+      <p class="status <%= booking.status %>"><%= booking.status %></p>
+      <p class="price">€<%= booking.event.price %></p>
+    </div>
   </div>
-  <div class="message-status">
-    <p class="status pending"><h3>Status: <%= booking.status %></h3></p>
-    <p class="price"><%= booking.event.price %></p>
-  </div>
+  <% end %>
   <% end %>
 </div>
 

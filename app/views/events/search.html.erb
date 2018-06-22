@@ -1,7 +1,15 @@
+
 <div id="wrap-content">
 
-  <h1>Events near <%= params[:event][:city].capitalize %></h1>
+  <h1>Results for <%= params[:event][:query].capitalize %></h1>
   <div id="map" style="width: 100%; height: 300px; margin: 10px auto;" data-markers="<%= @markers.to_json %>"></div>
+  <div id="search-result">
+    <strong> Bands in that area </strong>
+  <% @bands.each do |band| %>
+    <div class="band-result"><%= link_to band.name, band_path(band) %></div>
+  <% end %>
+  </div>
+
   <div id="card-container">
     <%= render 'components/card' %>
   </div>

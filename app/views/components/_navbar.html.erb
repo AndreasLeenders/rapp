@@ -25,7 +25,7 @@
         <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
          <% if current_user && current_user.is_organiser %>
-            <li><%= link_to "My profile", my_profile_path %></li>
+            <li><%= link_to "My profile", organiser_path(current_user.organiser) %></li>
             <li><%= link_to "My events", my_events_path %></li>
             <li><%= link_to "My bookings", my_bookings_path %></li>
           <% elsif current_user && current_user.is_band %>

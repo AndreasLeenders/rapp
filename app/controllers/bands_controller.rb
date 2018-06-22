@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
-   before_action :set_band, only: [:show, :destroy, :edit, :update]
+
+  before_action :set_band, only: [:show, :destroy, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:index, :search, :show]
 
   def index
    @bands = Band.all
@@ -7,7 +9,12 @@ class BandsController < ApplicationController
 
   def show
    @band = Band.find(params[:id].to_i)
-
+   @markers = [
+        {
+          lat: @band.latitude,
+          lng: @band.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+        } ]
   end
 
   def new

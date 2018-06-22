@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-      @marker = [
+      @markers = [
         {
           lat: @event.latitude,
           lng: @event.longitude#,
@@ -70,8 +70,9 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = Event.where ("address LIKE '%#{params[:event][:city].downcase}%'")
-
+    query = params[:event][:query]
+    @events = Event.search_by_name_and_address(query)
+    @bands = Band.search_by_name_and_location(query)
     @markers = @events.map do |event|
       {
         lat: event.latitude,

@@ -8,7 +8,6 @@ class OrganisersController < ApplicationController
 
   def create
     @organiser = Organiser.new(organiser_params)
-
     if @organiser.save
       redirect_to organiser_path(@organiser),  notice: 'Organiser was successfully created.'
     else
