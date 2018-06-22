@@ -5,15 +5,15 @@
     <img class="avatar-large" src=<%= booking.event.picture %>>
     <div class="message-name">
       <h3> <%= booking.event.name %></h3>
-      <p><%= booking.created_at%></p>
+      <p><%= booking.created_at.strftime("%b %e, %l:%M %P")%></p>
     </div>
     <div class="message-body">
       <p><strong>Booking request</strong></p>
       <p>
-        <%= booking.message %>
+        <strong>You:</strong> <%= booking.message %>
       </p>
       <p>
-        <%= booking.answer %>
+        <strong>Organiser: </strong><%= booking.answer %>
       </p>
     </div>
     <div class="message-status">
@@ -28,15 +28,15 @@
     <img class="avatar-large" src=<%= booking.band.pictures %>>
     <div class="message-name">
       <h3> <%= booking.event.name%></h3>
-      <p><%= booking.created_at %></p>
+      <p><%= booking.created_at.strftime("%b %e, %l:%M %P") %></p>
     </div>
     <div class="message-body">
       <p><strong>Booking request</strong></p>
       <p>
-        <strong>You:</strong> <%=booking.message %>
+        <strong>Band:</strong> <%=booking.message %>
       </p>
       <p>
-        <strong>Organiser:</strong> <%=booking.answer %>
+        <strong>You:</strong> <%=booking.answer %>
       </p>
     </div>
     <div class="message-status">
