@@ -17,33 +17,35 @@
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% if current_user.is_organiser %>
-        <img src="https://c.pxhere.com/photos/ae/db/music_concert_singer_band_guitar-314.jpg!d" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+
+        <% if !current_user.is_band %>
+        <% organiser = Organiser.find_by user_id:current_user.id %>
+        <img src=" <%= organiser.picture %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <% elsif current_user.is_band %>
         <% band = Band.find_by user_id:current_user.id %>
-          <img src="<%= band.pictures %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <img src="<%= band.pictures %>" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-         <% if current_user && current_user.is_organiser %>
-            <li><%= link_to "My profile", organiser_path(current_user.organiser) %></li>
-            <li><%= link_to "My events", my_events_path %></li>
-            <li><%= link_to "My bookings", my_bookings_path %></li>
-          <% elsif current_user && current_user.is_band %>
-            <li><%= link_to "My profile", band_path(current_user.band) %></li>
-            <li><%= link_to "My bookings", my_bookings_path %></li>
-          <% end %>
-            <li><%= link_to destroy_user_session_path, method: :delete do %>
-                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-               <% end %></li>
-        </ul>
-      </div>
-    </div>
-    <% end %>
-  </div>
+         <% if current_user && !current_user.is_band %>
+         <li><%= link_to "My profile", organiser_path(current_user.organiser) %></li>
+         <li><%= link_to "My events", my_events_path %></li>
+         <li><%= link_to "My bookings", my_bookings_path %></li>
+         <% elsif current_user && current_user.is_band %>
+         <li><%= link_to "My profile", band_path(current_user.band) %></li>
+         <li><%= link_to "My bookings", my_bookings_path %></li>
+         <% end %>
+         <li><%= link_to destroy_user_session_path, method: :delete do %>
+           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+           <% end %></li>
+         </ul>
+       </div>
+     </div>
+     <% end %>
+   </div>
 
-  <!-- Dropdown appearing on mobile only -->
-  <% if !current_user.nil? %>
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+   <!-- Dropdown appearing on mobile only -->
+   <% if !current_user.nil? %>
+   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -53,20 +55,20 @@
 
 
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-               <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-             <% end %></li>
+         <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+         <% end %></li>
 
-        <% if !current_user.nil? && current_user.is_organiser %>
-        <li><a href="#">My profile</a></li>
-        <li><a href="#">My events</a></li>
-        <li><a href="#">Bookings</a></li>
-        <% elsif !current_user.nil? && current_user.is_band %>
-        <li><a href="#">My profile</a></li>
-        <li><a href="#">Bookings</a></li>
-        <% end %>
+         <% if !current_user.nil? && current_user.is_organiser %>
+         <li><a href="#">My profile</a></li>
+         <li><a href="#">My events</a></li>
+         <li><a href="#">Bookings</a></li>
+         <% elsif !current_user.nil? && current_user.is_band %>
+         <li><a href="#">My profile</a></li>
+         <li><a href="#">Bookings</a></li>
+         <% end %>
 
-      </ul>
-    </div>
-  </div>
-  <% end %>
-</div>
+       </ul>
+     </div>
+   </div>
+   <% end %>
+ </div>

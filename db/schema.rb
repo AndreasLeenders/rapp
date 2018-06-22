@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2018_06_21_151912) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "picture", default: "https://static1.squarespace.com/static/55fc0004e4b069a519961e2d/t/55fc301ae4b01342ae9212a1/1442590746805/?format=500w"
+    t.string "picture", default: "http://www.madaboutmemes.com/uploads/memes/224.jpg"
     t.index ["user_id"], name: "index_organisers_on_user_id"
   end
 

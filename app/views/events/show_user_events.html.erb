@@ -1,8 +1,8 @@
 <div id="wrap-content">
   <h1>Events organised</h1>
-  <% if !current_user.nil? && current_user.is_organiser? %>
+  <% if !current_user.nil? && !current_user.is_band %>
     <h4><%= link_to 'Create a new event', new_event_path %></h4><% end %>
-    <% if @events.empty? %>
+    <% if @events.nil? %>
       <h2> You don't have any events yet …</h2>
     <% else %>
       <div id="card-container">
