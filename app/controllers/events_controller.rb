@@ -71,14 +71,22 @@ class EventsController < ApplicationController
 
   def search
     query = params[:event][:query]
-    @events = Event.search_by_name_and_address(query)
-    @bands = Band.search_by_name_and_location(query)
+    @events = Event.search_by_name_and_address(query).where.not(latitude: nil, longitude: nil)
+    @bands = Band.search_by_name_and_location(query).where.not(latitude: nil, longitude: nil)
     @markers = @events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude#,
         # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
       }
+    end
+    @bands.each do |band|
+      location = {
+        lat: band.latitude,
+        lng: band.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+      }
+      @markers << location
     end
   end
 

@@ -55,13 +55,12 @@ puts "creating bands"
     is_organiser: false,
   )
   user.save!
-
   band = Band.new(
     user_id: user.id,
     name: Faker::RockBand.name,
     content: Faker::StarWars.quote,
     pictures: ["https://i.pinimg.com/originals/70/51/80/7051808b359b3fa1a96040193ea7c4ef.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Arena_%28band%29.jpg/1200px-Arena_%28band%29.jpg", "http://iceagecopenhagen.eu/images/bandphoto.jpg", "http://mediad.publicbroadcasting.net/p/ketr/files/styles/x_large/public/201706/The_Band_of_Heathens_Credit-Greg-Giannukos-1.jpg"].sample,
-    soundcloud: rand(200000000..300000000),
+    soundcloud: [1078461, 1050063, 31829256, 527845, 5636679, 2171095, 81746757, 42994431].sample,
     location: Faker::Address.full_address,
     )
   band.save!
@@ -117,7 +116,7 @@ puts "creating sample band (band@gmail.com // pass : bandpassword)"
       user_id: user.id,
       name: Faker::RockBand.name,
       content: Faker::StarWars.quote,
-      pictures: "http://igloomusic.co.uk/wp-content/uploads/2014/09/my-band.jpg",
+      pictures: "https://lastfm-img2.akamaized.net/i/u/avatar300s/bce9e9ba6e77295fee8b11257ee37be3.jpg",
       soundcloud: 203410014,
       location: Faker::Address.full_address
       )
@@ -132,6 +131,7 @@ puts "creating booking"
         event_id: Event.all.sample.id,
         status: ['Pending', 'Accepted', 'Declined'].sample,
         message: "this is a message",
+        answer: "this is an answer"
     )
   booking.save!
 end

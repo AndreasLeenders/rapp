@@ -40,8 +40,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    set_booking
     @booking.update(booking_params)
-    redirect_to band_booking_path(@booking.band)
+    redirect_to "/my_bookings"
   end
 
   private
@@ -49,10 +50,10 @@ class BookingsController < ApplicationController
 
 
   def booking_params
-    params.require(:booking).permit(:status, :message, :event_id, :band_id)
+    params.require(:booking).permit(:status, :message, :answer, :event_id, :band_id)
   end
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 end

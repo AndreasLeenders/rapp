@@ -5,12 +5,15 @@
     <img class="avatar-large" src=<%= booking.event.picture %>>
     <div class="message-name">
       <h3> <%= booking.event.name %></h3>
-      <p><%= booking.created_at%></p>
+      <p><%= booking.created_at.strftime("%b %e, %l:%M %P")%></p>
     </div>
     <div class="message-body">
       <p><strong>Booking request</strong></p>
       <p>
-        <%= booking.message %>
+        <strong>You:</strong> <%= booking.message %>
+      </p>
+      <p>
+        <strong>Organiser: </strong><%= booking.answer %>
       </p>
     </div>
     <div class="message-status">
@@ -25,12 +28,15 @@
     <img class="avatar-large" src=<%= booking.band.pictures %>>
     <div class="message-name">
       <h3> <%= booking.event.name%></h3>
-      <p><%= booking.created_at %></p>
+      <p><%= booking.created_at.strftime("%b %e, %l:%M %P") %></p>
     </div>
     <div class="message-body">
       <p><strong>Booking request</strong></p>
       <p>
-        <%= booking.message %>
+        <strong>Band:</strong> <%=booking.message %>
+      </p>
+      <p>
+        <strong>You:</strong> <%=booking.answer %>
       </p>
       <p><strong><%= link_to "Rate this Band", new_booking_rating_path(booking) %></strong></p>
     </div>
@@ -38,11 +44,9 @@
       <p class="status <%= booking.status %>"><%= booking.status %></p>
       <p class="price">€<%= booking.event.price %></p>
       <% if booking.rating %>
-
       <p class="price"><%= "*" * booking.rating.stars  %></p>
       <% end %>
-
-
+      <p><%= link_to "Accept or cancel", edit_booking_path(booking) %></p>
     </div>
   </div>
   <% end %>

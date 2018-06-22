@@ -10,7 +10,7 @@
     <%= link_to "– Browse events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "– Browse bands", bands_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% if current_user.nil? %>
-    <%= link_to "– Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "– Sign-in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link sign-in" %>
     <% end %>
 
     <% if !current_user.nil? %>
