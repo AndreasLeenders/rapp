@@ -32,10 +32,17 @@
       <p>
         <%= booking.message %>
       </p>
+      <p><strong><%= link_to "Rate this Band", new_booking_rating_path(booking) %></strong></p>
     </div>
     <div class="message-status">
       <p class="status <%= booking.status %>"><%= booking.status %></p>
       <p class="price">€<%= booking.event.price %></p>
+      <% if booking.rating %>
+
+      <p class="price"><%= "*" * booking.rating.stars  %></p>
+      <% end %>
+
+
     </div>
   </div>
   <% end %>

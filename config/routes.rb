@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :bookings, only: :index
-  resources :ratings, only: [:new, :create, :destroy]
   get '/search', to: 'events#search', as: 'search'
-  get '/bands/:id/ratings', to: 'ratings#new'
+  # get '/bands/:id/ratings', to: 'ratings#new'
 
   resources :events do
     resources :bookings, only: [:new, :create]
@@ -13,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :organisers
   resources :bands
-  resources :bookings
+
+  resources :bookings do
+    resources :ratings, only: [:new, :create ]
+  end
 
   get "/my_bookings", to: "bookings#index", as: "my_bookings"
 
