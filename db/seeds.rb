@@ -7,6 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+puts "creating sample organiser (organiser@gmail.com // pass : organiserpassword)"
+    user = User.new(
+    email: "organiser@gmail.com",
+    password: "organiserpassword",
+    is_band: false,
+    is_organiser: true,
+  )
+    user.save!
+
+    organiser = Organiser.new(
+      user_id: user.id,
+      name: Faker::TwinPeaks.character
+      )
+    organiser.save!
+
+puts "done"
 
 puts "creating organisers"
 10.times do
@@ -55,11 +71,10 @@ puts "bands created"
 
 puts "creating events"
 10.times do
-  neg1 = rand(0..1)
-  neg2 = rand(0..1)
+  rand_number = rand(0..1)
 
   event = Event.new(
-    organiser_id: Organiser.all.sample.id,
+    organiser_id: rand_number >= 0.5 ? Organiser.all.sample.id : 1,
     name: Faker::Coffee.blend_name,
     date_begin: DateTime.new(2018,3,7),
     date_end: DateTime.new(2018,3,10),
@@ -81,28 +96,13 @@ puts "creating bookings"
   booking = Booking.new(
     band_id: Band.all.sample.id,
     event_id: Event.all.sample.id,
-    status: ['pending', 'accepted', 'refused', 'cancelled'].sample,
+    status: ['Pending', 'Accepted', 'Declined'].sample,
+    message: "this is a message",
     )
   booking.save!
 end
 puts "bookings created"
 
-puts "creating sample organiser (organiser@gmail.com // pass : organiserpassword)"
-    user = User.new(
-    email: "organiser@gmail.com",
-    password: "organiserpassword",
-    is_band: false,
-    is_organiser: true,
-  )
-    user.save!
-
-    organiser = Organiser.new(
-      user_id: user.id,
-      name: Faker::TwinPeaks.character
-      )
-    organiser.save!
-
-puts "done"
 
 puts "creating sample band (band@gmail.com // pass : bandpassword)"
     user = User.new(
@@ -126,11 +126,12 @@ puts "done"
 
 puts "creating booking"
 
+ 20.times do
   booking = Booking.new(
         band_id: band.id,
         event_id: Event.all.sample.id,
-        status: ['pending', 'accepted', 'refused', 'cancelled'].sample,
-        message: "this is a message"
+        status: ['Pending', 'Accepted', 'Declined'].sample,
+        message: "this is a message",
     )
   booking.save!
-
+end
