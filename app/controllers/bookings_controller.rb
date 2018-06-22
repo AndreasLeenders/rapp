@@ -45,13 +45,6 @@ class BookingsController < ApplicationController
     redirect_to "/my_bookings"
   end
 
-  def show_user_events
-    if current_user.is_band
-    band = Band.find_by user_id: current_user.id
-    @bookings = Booking.where("band_id = #{band.id}")
-    end
-  end
-
   private
 
 
