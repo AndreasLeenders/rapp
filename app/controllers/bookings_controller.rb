@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.band = current_user.band
     @booking.event = Event.find(params[:event_id])
-    elsif @booking.save
+    if @booking.save
       redirect_to "/my_bookings"
     else
       render :new
