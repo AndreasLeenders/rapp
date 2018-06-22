@@ -12,6 +12,9 @@
       <p>
         <%= booking.message %>
       </p>
+      <p>
+        <%= booking.answer %>
+      </p>
     </div>
     <div class="message-status">
       <p class="status <%= booking.status %>"><%= booking.status %></p>
@@ -30,12 +33,16 @@
     <div class="message-body">
       <p><strong>Booking request</strong></p>
       <p>
-        <%= booking.message %>
+        <strong>You:</strong> <%=booking.message %>
+      </p>
+      <p>
+        <strong>Organiser:</strong> <%=booking.answer %>
       </p>
     </div>
     <div class="message-status">
       <p class="status <%= booking.status %>"><%= booking.status %></p>
       <p class="price">€<%= booking.event.price %></p>
+      <p><%= link_to "Accept or cancel", edit_booking_path(booking) %></p>
     </div>
   </div>
   <% end %>
