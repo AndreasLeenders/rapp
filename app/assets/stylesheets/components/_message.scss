@@ -1,7 +1,7 @@
 .message {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
 }
 .message:last-child {
@@ -15,19 +15,20 @@
   min-width: 100px;
 }
 .message-name h3 {
-  font-size: 13px;
+  font-size: 20px;
   margin-bottom: 0px;
 }
 .message-name p {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: lighter;
   opacity: 0.6;
   margin-top: 5px;
 }
 .message-body {
   padding-left: 10px;
-  font-size: 13px;
+  font-size: 20px;
   color: rgba(0,0,0,0.7);
+
 }
 .message-body {
   padding-left: 20px;
@@ -38,18 +39,24 @@
   color: rgba(0,0,0,0.9);
 }
 .message-body p {
+  font-size: 18px;
   margin: 6px 0;
 }
 .message-status {
   font-size: 14px;
   font-weight: bold;
 }
-.status.accepted {
+.status.Accepted {
   color: #04A366;
 }
-.status.declined {
+.status.Declined {
   color: red;
 }
-.status.pending {
+.status.Pending {
   color: lightgrey;
 }
+
+.avatar-large {
+  width: 100px;
+  border-radius: 15px;
+  }
