@@ -1,1 +1,11 @@
+<div style="margin-top: 85px">
+<div class="rapp-form">
+  <%= simple_form_for [@event, @booking] do |f| %>
+    <%= f.select :status , [['Accepted'],['Declined']] %>
+
+    <%= f.input :answer%>
+    <%= f.submit %>
+  <% end %>
+</div>
+</div>
 

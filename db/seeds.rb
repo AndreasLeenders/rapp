@@ -132,6 +132,7 @@ puts "creating booking"
         event_id: Event.all.sample.id,
         status: ['Pending', 'Accepted', 'Declined'].sample,
         message: "this is a message",
+        answer: "this is an answer"
     )
   booking.save!
 end
