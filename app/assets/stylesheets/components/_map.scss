@@ -10,9 +10,11 @@
 }
 
 #content-container {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
   width: 50%;
   height: 80vh;
-  padding: 50px;
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   h4 {
@@ -24,6 +26,12 @@
 .half-page-left {
   width: 100%;
   height: 100%;
+}
+
+.half-page-right {
+  width: 100%;
+  height: 50%;
+  bottom: 0;
 }
 
 .request-btn {
