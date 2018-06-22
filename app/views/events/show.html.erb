@@ -12,6 +12,19 @@
     </div>
 
     <div id="content-container">
+          <h3>
+      <% if current_user && current_user.is_organiser && organiser[0].id == @event.organiser_id %>
+      <%= link_to edit_event_path(@event), class: "default-btn" do %>
+      <span class="default-btn"><i class="far fa-edit"></i> Edit</span>
+      <% end %>
+
+      <%= link_to event_path(@event), method: :delete, class: "default-btn" do %>
+      <span class="default-btn"><i class="far fa-trash-alt"></i> Delete</span>
+      <% end %>
+
+      <% elsif current_user && current_user.is_band %><%= link_to "Request a booking", new_event_booking_path(@event), class: "request-btn" %><% end %>
+    </h3>
+
     <h4>
       <%= @event.date_begin.strftime("%b %e") %>
       <i class="fas fa-arrow-right"></i>
@@ -22,11 +35,8 @@
       <li>Equipments : <%= @event.equipment %></li>
       <li>Commodities : <%= @event.commodities %></li>
       <li>Price: <%= @event.price %>€</li>
+      <li>Organised by: <%= @event.organiser.name %></li>
     </ul>
-    <h3>
-      <% if current_user && current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event), class: "default-btn" %><%= link_to "Delete", event_path(@event), method: :delete, class: "default-btn" %>
-      <% elsif current_user && current_user.is_band %><%= link_to "Request a booking", new_event_booking_path(@event), class: "request-btn" %><% end %>
-    </h3>
     </div>
   </div>
     <p>

@@ -17,7 +17,7 @@
   </div>
   <br>
   <div id="search">
-    <%= form_for "event", url: search_path, :html => { class: "search-form" }, method: :get, action: :search, controller: :events do |f| %><%= f.text_field "query", placeholder: "Search" %><%= f.submit  "Go!", placeholder: "Go!", default: "Go!" %>
+    <%= form_for "event", url: search_path, :html => { class: "search-form" }, method: :get, action: :search, controller: :events do |f| %><%= f.text_field "query", placeholder: "Search for events / bands / location…" %><%= f.submit  "Go!", placeholder: "Go!", default: "Go!" %>
     <% end %>
     </div>
 </div>

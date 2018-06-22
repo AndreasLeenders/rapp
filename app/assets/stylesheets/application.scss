@@ -97,12 +97,26 @@ h1 {
   margin-top: 20px;
 }
 
+.rapp-form input[type=submit] {
+  background-color: white;
+  color: black;
+  width: 50%;
+  border-radius: none;
+  transition-duration: 0.4s;
+  margin-top: 20px;
+  &:hover {
+    background-color: rgb(210, 210, 210);
+  }
+}
+
 .rapp-form .btn:hover {
   background-color: rgb(210, 210, 210);
 }
 
 .rapp-form select {
   background-color: black;
+  color: white;
+  width: 50%;
 }
 
 .session-link {

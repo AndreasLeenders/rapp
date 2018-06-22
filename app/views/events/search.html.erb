@@ -1,8 +1,11 @@
 
 <div id="wrap-content">
-
   <h1>Results for <%= params[:event][:query].capitalize %></h1>
   <div id="map" style="width: 100%; height: 300px; margin: 10px auto;" data-markers="<%= @markers.to_json %>"></div>
+    <% if !current_user.nil? && current_user.is_organiser? %>
+    <h4><%= link_to 'Create a new event', new_event_path, class: "default-btn" %></h4>
+  <% end %>
+  <br>
   <div id="search-result">
     <strong> Bands that are matching your search :</strong>
     <% @bands.each do |band| %>

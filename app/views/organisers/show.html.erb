@@ -1,14 +1,19 @@
 <div id="wrap-content">
-<p><%= link_to "Back on the main page", root_path %></p>
-<p><%= link_to "Edit profile", edit_organiser_path(@organiser) %></p>
-  <h1>Profile</h1>
 
- <ul>
-   <li><h2><%= @organiser.name %></h2></li>
- </ul>
+  <h1>Profile of <%= @organiser.name %></h1>
+  <div style="margin-top: 50px; text-align: right;">
+      <% if current_user && current_user.is_organiser && current_user.organiser.id == @organiser.id %><%= link_to edit_organiser_path(@organiser), class: "default-btn" do %>
+      <span class="default-btn"><i class="far fa-edit"></i> Edit</span>
+      <% end %>
+      <%= link_to organiser_path(@organiser), method: :delete, class: "default-btn" do %>
+      <span class="default-btn"><i class="far fa-trash-alt"></i> Delete</span>
+      <% end %>
+<% end %>
+</div>
+
  <div id="card-container">
    <% @organiser.events.each do |event| %>
-     <section class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= event.picture %>'); background-size: cover;">
+     <section class="col-6 col-xs-4 card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= event.picture %>'); background-size: cover;">
        <h3><%= event.city.capitalize %></h3>
        <h2><%= link_to event.name, event_path(event) %></h2>
        <h4>

@@ -28,6 +28,13 @@ class EventsController < ApplicationController
     if current_user.is_organiser
     organiser = Organiser.find_by user_id: current_user.id
     @events = Event.where("organiser_id = #{organiser.id}")
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+      }
+    end
     end
   end
 

@@ -4,7 +4,14 @@ class BandsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
 
   def index
-   @bands = Band.all
+   @bands = Band.where.not(latitude: nil, longitude: nil)
+   @markers = @bands.map do |band|
+      {
+        lat: band.latitude,
+        lng: band.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/events/map_box", locals: { event: event }) }
+      }
+    end
   end
 
   def show

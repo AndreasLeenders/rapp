@@ -9,5 +9,10 @@
       <%= f.input :location %>
       <%= f.button :submit %>
     <% end %>
+
   </div>
+  <%= link_to band_path(@band), class: "breadcrumb" do %>
+  <i class="fas fa-arrow-left"></i>
+  Back to your band page
+  <% end %>
 </div>
