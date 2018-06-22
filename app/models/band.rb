@@ -9,6 +9,13 @@ class Band < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  validates :name, presence: true
+  validates :location, presence: true
+  validates :content, presence: true
+  validates :soundcloud, presence: true
+
+
+
   belongs_to :user
   has_many :ratings
   has_many :bookings

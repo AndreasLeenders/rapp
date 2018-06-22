@@ -32,7 +32,7 @@ class BandsController < ApplicationController
    if !is_band?
     puts "you are not allowed to access"
     redirect_to bands_path
-  end
+    end
   end
 
   def create
@@ -50,8 +50,7 @@ class BandsController < ApplicationController
     if @band.update(band_params)
      redirect_to band_path(@band), notice: 'Band was successfully updated.'
     else
-       render :edit
-       redirect_to edit_band_path
+      render :edit
     end
    end
 
@@ -69,7 +68,7 @@ class BandsController < ApplicationController
   end
 
   def band_params
-    params.require(:band).permit(:name, :location)
+    params.require(:band).permit(:name, :location, :content, :pictures, :soundcloud)
   end
 
   def is_band?
