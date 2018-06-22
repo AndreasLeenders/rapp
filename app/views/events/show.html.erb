@@ -24,7 +24,7 @@
       <li>Price: <%= @event.price %>€</li>
     </ul>
     <h3>
-      <% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event), class: "default-btn" %><%= link_to "Delete", event_path(@event), method: :delete, class: "default-btn" %><% elsif current_user.is_band %><%= link_to "Request a booking", new_band_booking_path(@event), class: "request-btn" %><% end %>
+      <% if current_user.is_organiser && organiser[0].id == @event.organiser_id %><%= link_to "Edit", edit_event_path(@event), class: "default-btn" %><%= link_to "Delete", event_path(@event), method: :delete, class: "default-btn" %><% elsif current_user.is_band %><%= link_to "Request a booking", new_event_booking_path(@event), class: "request-btn" %><% end %>
     </h3>
     </div>
   </div>

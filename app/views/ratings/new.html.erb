@@ -1,0 +1,16 @@
+
+<p>Averate rating</p>
+<div id="star"></div>
+
+<p>Your rating</p>
+
+
+<h3>Add a review</h3>
+<%= simple_form_for [@band, @rating] do |f| %>
+  <% f.notification %>
+  <% f.error.notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :rating, collection: 0..5 %>
+  <%= f.input :content %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
