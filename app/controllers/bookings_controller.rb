@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    if current_user.band.id != @event.band_id
     @booking = Booking.new(booking_params)
     @booking.band = current_user.band
     @booking.event = Event.find(params[:event_id])
